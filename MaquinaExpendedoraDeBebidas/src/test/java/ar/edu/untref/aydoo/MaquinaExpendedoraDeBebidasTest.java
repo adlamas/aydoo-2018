@@ -19,9 +19,9 @@ public class MaquinaExpendedoraDeBebidasTest {
         maquinaExpendedoraDeBebidas.hacerCafeConLecheConNDeAzucar(unVaso, cantidadAzucar);
 
         Assert.assertEquals(cantidadAzucar, unVaso.getCantidadDeAzucar());
-        //Assert.assertTrue(unVaso.tieneCafe());
-        //Assert.assertTrue(unVaso.tieneAzucar());
-        //Assert.assertFalse(unVaso.tieneTe());
+        Assert.assertTrue(unVaso.tieneCafe());
+        Assert.assertTrue(unVaso.tieneAzucar());
+        Assert.assertFalse(unVaso.tieneTe());
     }
 
 }

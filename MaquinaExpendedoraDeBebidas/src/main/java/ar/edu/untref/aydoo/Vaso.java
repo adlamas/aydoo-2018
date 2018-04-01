@@ -15,17 +15,15 @@ public class Vaso {
     }
 
     public boolean tieneCafe(){
-        return false;
+        return this.bebidas.contains("Cafe");
     }
 
     public boolean tieneTe(){
-
-        return false;
+        return this.bebidas.contains("Te");
     }
 
     public boolean tieneAzucar(){
-
-        return false;
+        return this.bebidas.contains("Leche");
     }
 
     public void aniadirSustancia(String bebida){
