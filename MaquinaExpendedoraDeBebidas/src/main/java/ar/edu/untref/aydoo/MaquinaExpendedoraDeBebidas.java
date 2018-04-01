@@ -6,14 +6,15 @@ public class MaquinaExpendedoraDeBebidas {
     private HacedorDeTe hacedorDeTe = new HacedorDeTe();
     private Azucarero azucarero = new Azucarero();
 
-    public Vaso hacerCafeConLecheConNDeAzucar(Vaso unVaso, int cantidadAzucar){
+    public void hacerCafeConLecheConNDeAzucar(Vaso unVaso, int cantidadAzucar){
         hacedorDeCafe.hacerCafeConLeche(unVaso);
         azucarero.ponerAzucar(unVaso, cantidadAzucar);
 
-        return unVaso;
+        //return unVaso;
     }
 
     public void hacerTeConLecheConNDeAzucar(Vaso unVaso, int cantidadAzucar){
-
+        hacedorDeTe.hacerTeConLeche(unVaso);
+        azucarero.ponerAzucar(unVaso, cantidadAzucar);
     }
 }

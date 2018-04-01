@@ -23,7 +23,7 @@ public class Vaso {
     }
 
     public boolean tieneAzucar(){
-        return this.bebidas.contains("Leche");
+        return this.cantidadDeAzucar > 0;
     }
 
     public void aniadirSustancia(String bebida){
