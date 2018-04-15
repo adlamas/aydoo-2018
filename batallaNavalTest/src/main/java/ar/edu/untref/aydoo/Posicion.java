@@ -19,6 +19,10 @@ public class Posicion {
         return  columna;
     }
 
+    public void ocuparPosicion(){
+        this.lleno = true;
+    }
+
     public boolean saberSiLaPosicionTieneAlgo(){
         return lleno;
     }
