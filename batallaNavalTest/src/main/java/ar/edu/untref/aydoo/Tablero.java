@@ -1,8 +1,11 @@
 package ar.edu.untref.aydoo;
 
+import java.util.LinkedList;
+
 public class Tablero {
 
     private Posicion posiciones[][] = new Posicion[10][10];
+    private LinkedList<Barco> barcos = new LinkedList<Barco>();
 
     public Tablero(){
         for(int i = 0; i < 10; i++){
@@ -22,8 +25,10 @@ public class Tablero {
         return ResultadoDeDisparo.AGUA;
     }
 
-    public void ubicarBarcoHorizontalOVertical(Barco barco, Posicion posicionInicial)
-    {
+    public void ubicarBarcoHorizontalOVertical(Barco barco, Posicion posicionInicial) throws Exception {
+
+        verificarQueLasPosicionesAlPonerUnBarcoNoEstenLlenas(barco, posicionInicial);
+
         this.posiciones[posicionInicial.getFila()][posicionInicial.getColumna()].ocuparPosicion();
         if(barco.getOrientacion() == Orientacion.HORIZONTAL){
             for(int i = 1; i < barco.getLongitud(); i++){
@@ -37,6 +42,25 @@ public class Tablero {
             }
         }
 
+    }
+
+    private void verificarQueLasPosicionesAlPonerUnBarcoNoEstenLlenas(Barco barco, Posicion posicionInicial)
+            throws Exception
+    {
+        if(barco.getOrientacion() == Orientacion.HORIZONTAL){
+            for(int i = 0; i < barco.longitud; i++){
+                if(this.posiciones[posicionInicial.getFila()][posicionInicial.getColumna() + i].saberSiLaPosicionTieneAlgo() == true){
+                    throw new Exception("La posicion ya esta llena, no podes meter un barco ahi");
+                }
+            }
+        }
+        else{
+            for(int i = 0; i < barco.longitud; i++){
+                if(this.posiciones[posicionInicial.getFila() + i][posicionInicial.getColumna()].saberSiLaPosicionTieneAlgo() == true){
+                    throw new Exception("La posicion ya esta llena, no podes meter un barco ahi");
+                }
+            }
+        }
     }
 
     public boolean estadoPosicion(int fila, int columna){
