@@ -8,8 +8,8 @@ public class Tablero {
     private LinkedList<Barco> barcos = new LinkedList<Barco>();
 
     public Tablero(){
-        for(int i = 0; i < 10; i++){
-            for(int j = 0; j < 10; j++){
+        for(int i = 0; i < posiciones.length; i++){
+            for(int j = 0; j < posiciones[i].length; j++){
                 posiciones[i][j] = new Posicion(i,j);
             }
         }
@@ -21,43 +21,49 @@ public class Tablero {
         {
             return null;
         }
-
         return ResultadoDeDisparo.AGUA;
     }
 
     public void ubicarBarcoHorizontalOVertical(Barco barco, Posicion posicionInicial) throws Exception {
 
-        verificarQueLasPosicionesAlPonerUnBarcoNoEstenLlenas(barco, posicionInicial);
-
+        verificarQueLasPosicionesAlPonerUnBarcoSeanLegitimas(barco, posicionInicial);
         this.posiciones[posicionInicial.getFila()][posicionInicial.getColumna()].ocuparPosicion();
+
         if(barco.getOrientacion() == Orientacion.HORIZONTAL){
-            for(int i = 1; i < barco.getLongitud(); i++){
-                this.posiciones[posicionInicial.getFila()][posicionInicial.getColumna() + i].ocuparPosicion();
-            }
+            ubicarBarcoHorizontal(barco, posicionInicial);
         }
-        else
-            {
-            for(int i = 1; i < barco.getLongitud(); i++){
-                this.posiciones[posicionInicial.getFila()+ i][posicionInicial.getColumna()].ocuparPosicion();
-            }
+        else{
+            ubicarBarcoVertical(barco,posicionInicial);
         }
 
     }
 
-    private void verificarQueLasPosicionesAlPonerUnBarcoNoEstenLlenas(Barco barco, Posicion posicionInicial)
+    public void ubicarBarcoHorizontal(Barco barco, Posicion posicionInicial){
+        for(int i = 1; i < barco.getLongitud(); i++){
+            this.posiciones[posicionInicial.getFila()][posicionInicial.getColumna() + i].ocuparPosicion();
+        }
+    }
+    public void ubicarBarcoVertical(Barco barco, Posicion posicionInicial){
+        for(int i = 1; i < barco.getLongitud(); i++){
+            this.posiciones[posicionInicial.getFila()+ i][posicionInicial.getColumna()].ocuparPosicion();
+        }
+    }
+
+
+    private void verificarQueLasPosicionesAlPonerUnBarcoSeanLegitimas(Barco barco, Posicion posicionInicial)
             throws Exception
     {
         if(barco.getOrientacion() == Orientacion.HORIZONTAL){
             for(int i = 0; i < barco.longitud; i++){
                 if(this.posiciones[posicionInicial.getFila()][posicionInicial.getColumna() + i].saberSiLaPosicionTieneAlgo() == true){
-                    throw new Exception("La posicion ya esta llena, no podes meter un barco ahi");
+                    throw new Exception("Una posicion ya esta llena, no podes meter un barco ahi");
                 }
             }
         }
         else{
             for(int i = 0; i < barco.longitud; i++){
                 if(this.posiciones[posicionInicial.getFila() + i][posicionInicial.getColumna()].saberSiLaPosicionTieneAlgo() == true){
-                    throw new Exception("La posicion ya esta llena, no podes meter un barco ahi");
+                    throw new Exception("Una posicion ya esta llena, no podes meter un barco ahi");
                 }
             }
         }

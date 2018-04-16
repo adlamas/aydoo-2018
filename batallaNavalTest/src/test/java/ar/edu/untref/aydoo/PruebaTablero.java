@@ -27,7 +27,6 @@ public class PruebaTablero {
     }
 
     @Test (expected = Exception.class)
-
     public void  ubicarBarcoEncimaDeOtroYQueTireUnaExcepcion() throws Exception {
         Tablero tablero = new Tablero();
         Barco miBarco = new Barco( 2, Orientacion.VERTICAL );
@@ -36,14 +35,17 @@ public class PruebaTablero {
         Posicion posicionDos = new Posicion(2,1);
 
         tablero.ubicarBarcoHorizontalOVertical(miBarco, posicionUno);
-
         tablero.ubicarBarcoHorizontalOVertical(miSegundoBarco,posicionDos);
-
 
     }
 
-    @Test
-    public void ubicarBarcoFueraDelTableroYQueTireUnaExcepcion(){
+    @Test (expected = Exception.class)
+    public void ubicarBarcoFueraDelTableroYQueTireUnaExcepcion() throws Exception{
+        Tablero tablero = new Tablero();
+        Barco miBarco = new Barco( 2, Orientacion.HORIZONTAL );
+        Posicion posicionUno = new Posicion(8,9);
+
+        tablero.ubicarBarcoHorizontalOVertical(miBarco, posicionUno);
 
     }
 
