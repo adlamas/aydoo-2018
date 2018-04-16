@@ -48,7 +48,7 @@ public class PruebaTablero {
 
     }
 
-    @Test
+    /*@Test
     public void dispararABarcoYQueDeTocado() throws Exception{
         Tablero tablero = new Tablero();
         Barco miBarco = new Barco( 2);
@@ -58,7 +58,7 @@ public class PruebaTablero {
         ResultadoDeDisparo resultadoDisparo = tablero.recibirDisparo(new Posicion(2,2));
 
         Assert.assertEquals(resultadoDisparo,ResultadoDeDisparo.TOCADO);
-    }
+    }*/
 
     @Test
     public void dispararABarcoYQueDeHundido(){
