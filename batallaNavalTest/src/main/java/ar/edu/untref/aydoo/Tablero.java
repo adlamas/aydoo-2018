@@ -1,5 +1,7 @@
 package ar.edu.untref.aydoo;
 
+import com.sun.org.apache.xpath.internal.operations.Or;
+
 import java.util.LinkedList;
 
 public class Tablero {
@@ -24,12 +26,13 @@ public class Tablero {
         return ResultadoDeDisparo.AGUA;
     }
 
-    public void ubicarBarcoHorizontalOVertical(Barco barco, Posicion posicionInicial) throws Exception {
+    public void ubicarBarcoHorizontalOVertical(Barco barco, Posicion posicionInicial, Orientacion Orientacion)
+            throws Exception {
 
-        verificarQueLasPosicionesAlPonerUnBarcoSeanLegitimas(barco, posicionInicial);
+        verificarQueLasPosicionesAlPonerUnBarcoSeanLegitimas(barco, posicionInicial, Orientacion);
         this.posiciones[posicionInicial.getFila()][posicionInicial.getColumna()].ocuparPosicion();
 
-        if(barco.getOrientacion() == Orientacion.HORIZONTAL){
+        if(Orientacion == Orientacion.HORIZONTAL){
             ubicarBarcoHorizontal(barco, posicionInicial);
         }
         else{
@@ -38,33 +41,40 @@ public class Tablero {
 
     }
 
-    public void ubicarBarcoHorizontal(Barco barco, Posicion posicionInicial){
+    private void ubicarBarcoHorizontal(Barco barco, Posicion posicionInicial){
         for(int i = 1; i < barco.getLongitud(); i++){
             this.posiciones[posicionInicial.getFila()][posicionInicial.getColumna() + i].ocuparPosicion();
         }
     }
-    public void ubicarBarcoVertical(Barco barco, Posicion posicionInicial){
+    private void ubicarBarcoVertical(Barco barco, Posicion posicionInicial){
         for(int i = 1; i < barco.getLongitud(); i++){
             this.posiciones[posicionInicial.getFila()+ i][posicionInicial.getColumna()].ocuparPosicion();
         }
     }
 
-
-    private void verificarQueLasPosicionesAlPonerUnBarcoSeanLegitimas(Barco barco, Posicion posicionInicial)
+    public void verificarQueLasPosicionesAlPonerUnBarcoSeanLegitimas(Barco barco, Posicion posicionInicial, Orientacion orientacion)
             throws Exception
     {
-        if(barco.getOrientacion() == Orientacion.HORIZONTAL){
-            for(int i = 0; i < barco.longitud; i++){
-                if(this.posiciones[posicionInicial.getFila()][posicionInicial.getColumna() + i].saberSiLaPosicionTieneAlgo() == true){
-                    throw new Exception("Una posicion ya esta llena, no podes meter un barco ahi");
-                }
-            }
+        if(orientacion == Orientacion.HORIZONTAL){
+            verificacionPosicionesHorizontales(barco,  posicionInicial);
         }
         else{
-            for(int i = 0; i < barco.longitud; i++){
-                if(this.posiciones[posicionInicial.getFila() + i][posicionInicial.getColumna()].saberSiLaPosicionTieneAlgo() == true){
-                    throw new Exception("Una posicion ya esta llena, no podes meter un barco ahi");
-                }
+            verificacionPosicionesVerticales(barco,  posicionInicial);
+        }
+    }
+
+    private void verificacionPosicionesHorizontales(Barco barco, Posicion posicionInicial) throws Exception{
+        for(int i = 0; i < barco.longitud; i++){
+            if(this.posiciones[posicionInicial.getFila()][posicionInicial.getColumna() + i].saberSiLaPosicionTieneAlgo() == true){
+                throw new Exception("Una posicion ya esta llena, no podes meter un barco ahi");
+            }
+        }
+    }
+
+    private void verificacionPosicionesVerticales(Barco barco, Posicion posicionInicial) throws Exception{
+        for(int i = 0; i < barco.longitud; i++){
+            if(this.posiciones[posicionInicial.getFila() + i][posicionInicial.getColumna()].saberSiLaPosicionTieneAlgo() == true){
+                throw new Exception("Una posicion ya esta llena, no podes meter un barco ahi");
             }
         }
     }

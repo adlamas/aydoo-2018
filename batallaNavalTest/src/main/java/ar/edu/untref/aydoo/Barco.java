@@ -6,9 +6,9 @@ public class Barco {
     Orientacion orientacion;
     Posicion posicionesDelBarco[] = new Posicion[longitud];
 
-    public Barco(int longitud, Orientacion orientacion) {
-        this.orientacion = orientacion;
+    public Barco(int longitud) {
         this.longitud = longitud;
+
     }
 
     public Orientacion getOrientacion() {
