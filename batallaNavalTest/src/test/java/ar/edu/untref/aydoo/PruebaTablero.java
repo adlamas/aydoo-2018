@@ -15,14 +15,24 @@ public class PruebaTablero {
     }
 
     @Test
-    public void ubicarUnBarcoEnLaPosicionUnoUnoHorizontalmenteYQueElTableroLoSepa() throws Exception{
+    public void pruebaUbicarBarcoHorizontalmenteYQueLaPosicionSeLLene() throws Exception{
         Tablero tablero = new Tablero();
-        tablero.ubicarBarcoHorizontalOVertical(new Barco(1)
+        tablero.ubicarBarcoYAniadirSusPosicionesAlTablero(new Barco(3)
                 ,new Posicion(1,1), Orientacion.HORIZONTAL);
 
-        boolean estadoPosicion = tablero.estadoPosicion(1,1);
+        Assert.assertEquals(false,tablero.posicionVacia(1,1));
+    }
 
-        Assert.assertTrue(estadoPosicion);
+    @Test
+    public void ubicarUnBarcoEnLaPosicionUnoUnoHorizontalmenteYQueElTableroLoSepa()
+            throws Exception{
+        Tablero tablero = new Tablero();
+        Barco barco = new Barco(1);
+        Posicion posicion = new Posicion(1,1);
+        tablero.ubicarBarcoYAniadirSusPosicionesAlTablero(barco,posicion, Orientacion.HORIZONTAL);
+
+        boolean estadoPosicion = tablero.posicionVacia(1,1);
+        Assert.assertEquals(false, estadoPosicion);
     }
 
     @Test (expected = Exception.class)
@@ -33,8 +43,8 @@ public class PruebaTablero {
         Posicion posicionUno = new Posicion(2,2);
         Posicion posicionDos = new Posicion(2,1);
 
-        tablero.ubicarBarcoHorizontalOVertical(miBarco, posicionUno, Orientacion.VERTICAL);
-        tablero.ubicarBarcoHorizontalOVertical(miSegundoBarco,posicionDos, Orientacion.HORIZONTAL);
+        tablero.ubicarBarcoYAniadirSusPosicionesAlTablero(miBarco, posicionUno, Orientacion.VERTICAL);
+        tablero.ubicarBarcoYAniadirSusPosicionesAlTablero(miSegundoBarco,posicionDos, Orientacion.HORIZONTAL);
 
     }
 
@@ -44,21 +54,11 @@ public class PruebaTablero {
         Barco miBarco = new Barco( 2);
         Posicion posicionUno = new Posicion(8,9);
 
-        tablero.ubicarBarcoHorizontalOVertical(miBarco, posicionUno, Orientacion.HORIZONTAL );
+        tablero.ubicarBarcoYAniadirSusPosicionesAlTablero(miBarco, posicionUno, Orientacion.HORIZONTAL );
 
     }
 
-    /*@Test
-    public void dispararABarcoYQueDeTocado() throws Exception{
-        Tablero tablero = new Tablero();
-        Barco miBarco = new Barco( 2);
-        Posicion posicionUno = new Posicion(2,2);
-
-        tablero.ubicarBarcoHorizontalOVertical(miBarco, posicionUno, Orientacion.HORIZONTAL );
-        ResultadoDeDisparo resultadoDisparo = tablero.recibirDisparo(new Posicion(2,2));
-
-        Assert.assertEquals(resultadoDisparo,ResultadoDeDisparo.TOCADO);
-    }*/
+    
 
     @Test
     public void dispararABarcoYQueDeHundido(){

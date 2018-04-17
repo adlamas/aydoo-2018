@@ -1,20 +1,19 @@
 package ar.edu.untref.aydoo;
 
-import com.sun.org.apache.xpath.internal.operations.Or;
-
 public class Posicion {
 
     int fila;
     int columna;
     boolean lleno = false;
-    Orientacion orientacion;
+    ParteDeBarco contenido;
 
     public Posicion(int fila, int columna) {
         this.fila = fila;
         this.columna = columna;
     }
 
-    public int getFila(){
+    public int getFila()
+    {
         return fila;
     }
 
@@ -26,11 +25,18 @@ public class Posicion {
         this.lleno = true;
     }
 
-    public boolean saberSiLaPosicionTieneAlgo(){
+    public boolean posicionLlena(){
         return lleno;
     }
 
-    public void setOrientacion(Orientacion orientacion){
-        this.orientacion = orientacion;
+    //Auxiliares para despues borrar los métodos de posicion
+    public void llenarContenido(ParteDeBarco parteDeBarco){
+        contenido = parteDeBarco;
     }
+
+    public boolean contenidoEstaVacio(){
+        return contenido == null;
+    }
+
+
 }

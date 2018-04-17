@@ -3,27 +3,21 @@ package ar.edu.untref.aydoo;
 public class Barco {
 
     int longitud;
-    Orientacion orientacion;
-    Posicion posicionesDelBarco[] = new Posicion[longitud];
+    ParteDeBarco partesDelBarco[];
 
     public Barco(int longitud) {
         this.longitud = longitud;
-
-    }
-
-    public Orientacion getOrientacion() {
-        return orientacion;
-    }
-
-    /*public void ubicarseEnTablero(Posicion posicionInicial){
+        partesDelBarco = new ParteDeBarco[longitud];
         for(int i = 0; i < longitud; i++){
-            if(this.orientacion.getOrientacion() == "horizontal"){
-
-            }
+            partesDelBarco[i] = new ParteDeBarco();
         }
-    }*/
+    }
 
     public int getLongitud(){
         return longitud;
+    }
+
+    public ParteDeBarco getParteDelBarco(int indice) {
+        return partesDelBarco[indice];
     }
 }
