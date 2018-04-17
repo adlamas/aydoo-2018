@@ -82,7 +82,15 @@ public class PruebaTablero {
         Assert.assertNull(partePosDosTres);
     }
 
-   
+    @Test
+    public void pongoUnBarcoYLeDisparo() throws Exception{
+
+    }
+
+    @Test
+    public void dispararABarcoYQueDeTocado() throws Exception{
+       
+    }
 
     @Test
     public void dispararABarcoYQueDeHundido(){

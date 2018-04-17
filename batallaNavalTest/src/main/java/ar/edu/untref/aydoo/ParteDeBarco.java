@@ -10,5 +10,9 @@ public class ParteDeBarco {
 
     }
 
+    public EstadoParteDeBarco devolverEstado(){
+        return this.estadoParteDeBarco;
+    }
+
 
 }

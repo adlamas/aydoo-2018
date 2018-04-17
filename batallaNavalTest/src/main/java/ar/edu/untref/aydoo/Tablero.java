@@ -1,10 +1,12 @@
 package ar.edu.untref.aydoo;
+import java.util.Iterator;
 import java.util.LinkedList;
 
 public class Tablero {
 
     private Posicion posiciones[][] = new Posicion[10][10];
     private LinkedList<Barco> barcos = new LinkedList<Barco>();
+    //private Iterator iteradorDeBarcos = barcos.listIterator();
 
     public Tablero(){
         for(int i = 0; i < posiciones.length; i++){
@@ -16,11 +18,14 @@ public class Tablero {
 
     public ResultadoDeDisparo recibirDisparo(Posicion posicion){
 
+        ResultadoDeDisparo resultadoDeDisparo = ResultadoDeDisparo.AGUA;
         if(posiciones[posicion.getFila()][posicion.getColumna()].contenidoEstaVacio() == false)
         {
-            return null;
+            for(Barco barco: barcos){
+                barco.responderSiSeHaRecibidoUnDisparo(posicion);
+            }
         }
-        return ResultadoDeDisparo.AGUA;
+        return resultadoDeDisparo;
     }
 
     public void ubicarBarcoYAniadirSusPosicionesAlTablero(Barco barco, Posicion posicionInicial,
