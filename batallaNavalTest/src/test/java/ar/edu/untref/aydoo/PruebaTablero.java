@@ -58,7 +58,31 @@ public class PruebaTablero {
 
     }
 
-    
+    @Test
+    public void insertoUnBarcoYSusPartesSeInsertanEnLasPosicionesDelTableroIndicadas()
+            throws Exception
+    {
+
+        Tablero tablero = new Tablero();
+        Barco barco = new Barco(3);
+        Posicion posicion = new Posicion(2,2);
+
+        tablero.ubicarBarcoYAniadirSusPosicionesAlTablero(barco, posicion, Orientacion.VERTICAL);
+        ParteDeBarco partePosDosDos = tablero.obtenerPosicion(2,2).obtenerContenido();
+        ParteDeBarco partePosTresDos = tablero.obtenerPosicion(3,2).obtenerContenido();
+        ParteDeBarco partePosCuatroDos = tablero.obtenerPosicion(4,2).obtenerContenido();
+        ParteDeBarco partePosCincoDos = tablero.obtenerPosicion(5,2).obtenerContenido();
+        ParteDeBarco partePosDosTres = tablero.obtenerPosicion(2,3).obtenerContenido();
+
+
+        Assert.assertNotNull(partePosDosDos);
+        Assert.assertNotNull(partePosTresDos);
+        Assert.assertNotNull(partePosCuatroDos);
+        Assert.assertNull(partePosCincoDos);
+        Assert.assertNull(partePosDosTres);
+    }
+
+   
 
     @Test
     public void dispararABarcoYQueDeHundido(){

@@ -21,13 +21,10 @@ public class Posicion {
         return  columna;
     }
 
-    public void ocuparPosicion(){
-        this.lleno = true;
+    public ParteDeBarco obtenerContenido(){
+        return contenido;
     }
 
-    public boolean posicionLlena(){
-        return lleno;
-    }
 
     //Auxiliares para despues borrar los métodos de posicion
     public void llenarContenido(ParteDeBarco parteDeBarco){

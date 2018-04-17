@@ -16,7 +16,7 @@ public class Tablero {
 
     public ResultadoDeDisparo recibirDisparo(Posicion posicion){
 
-        if(posiciones[posicion.getFila()][posicion.getColumna()].posicionLlena() == true)
+        if(posiciones[posicion.getFila()][posicion.getColumna()].contenidoEstaVacio() == false)
         {
             return null;
         }
@@ -24,7 +24,8 @@ public class Tablero {
     }
 
     public void ubicarBarcoYAniadirSusPosicionesAlTablero(Barco barco, Posicion posicionInicial,
-                                               Orientacion Orientacion) throws Exception {
+          Orientacion Orientacion) throws Exception
+    {
 
         verificarQueLasPosicionesAlPonerUnBarcoSeanLegitimas(barco, posicionInicial, Orientacion);
         this.posiciones[posicionInicial.getFila()][posicionInicial.getColumna()]
@@ -87,6 +88,10 @@ public class Tablero {
                 throw new Exception("Una posicion ya esta llena, no podes meter un barco ahi");
             }
         }
+    }
+
+    public Posicion obtenerPosicion(int fila, int columna){
+        return this.posiciones[fila][columna];
     }
 
     public boolean posicionVacia(int fila, int columna){
