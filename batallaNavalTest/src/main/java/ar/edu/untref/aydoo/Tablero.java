@@ -14,6 +14,7 @@ public class Tablero {
 
     public void agregarBarco(Barco mibarco){
         barcos.add(mibarco);
+        mibarco.llenarPosiciones();
     }
 
     public Barco obtenerBarco(int indice){
