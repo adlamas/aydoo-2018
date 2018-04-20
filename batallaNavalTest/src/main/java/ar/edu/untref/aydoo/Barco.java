@@ -43,4 +43,12 @@ public class Barco {
     public Orientacion getOrientacion() {
         return orientacion;
     }
+
+    public Posicion[] getPosiciones() {
+        return posiciones;
+    }
+
+    public  int obtenerLongitud(){
+        return longitud;
+    }
 }
