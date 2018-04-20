@@ -4,7 +4,6 @@ public class Posicion {
 
     int fila;
     int columna;
-    boolean lleno = false;
     ParteDeBarco contenido;
 
     public Posicion(int fila, int columna) {
@@ -23,16 +22,6 @@ public class Posicion {
 
     public ParteDeBarco obtenerContenido(){
         return contenido;
-    }
-
-
-    //Auxiliares para despues borrar los métodos de posicion
-    public void llenarContenido(ParteDeBarco parteDeBarco){
-        contenido = parteDeBarco;
-    }
-
-    public boolean contenidoEstaVacio(){
-        return contenido == null;
     }
 
 
