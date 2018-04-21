@@ -1,6 +1,7 @@
 package ar.edu.untref.aydoo;
 
 import cucumber.api.java.cs.A;
+import javafx.geometry.Pos;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -40,6 +41,19 @@ public class PruebaTablero {
         Assert.assertEquals(2,posicionesDelBarcoYaAgregado[1].getColumna());
     }
 
+    @Test
+    public void obtenerPosicionesQueOcupariaUnBarco(){
+        Tablero tablero = new Tablero();
+        Posicion posicionInicial = new Posicion(3,1);
+        Barco miBarco = new Barco(2,Orientacion.VERTICAL);
+        Posicion posiciones[] = tablero.calcularPosicionesQueOcupariaUnBarco(miBarco, posicionInicial);
+
+        Assert.assertEquals(3,posiciones[0].getFila());
+        Assert.assertEquals(1,posiciones[0].getColumna());
+        Assert.assertEquals(4,posiciones[1].getFila());
+        Assert.assertEquals(1,posiciones[1].getColumna());
+    }
+
     @Test //No pasa aún
     public void ponerUnBarcoEncimaDeOtroEnLaMismaPosicionYQueTireUnaExcepcion() throws Exception{
 
@@ -51,10 +65,6 @@ public class PruebaTablero {
 
     }
 
-    @Test
-    public void obtenerPosicionesQueOcupariaUnBarco(){
 
-
-    }
 
 }
