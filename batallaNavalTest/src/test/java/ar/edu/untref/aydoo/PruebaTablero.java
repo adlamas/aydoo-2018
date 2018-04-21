@@ -17,7 +17,7 @@ public class PruebaTablero {
     }
 
     @Test
-    public void crearYPonerBarcoDeLongUnoEnPosicionUnoUno() throws ExcepcionPosicionOcupada{
+    public void crearYPonerBarcoDeLongUnoEnPosicionUnoUno() throws ExcepcionPosicionOcupada ,ExcepcionBarcoFueraDeLimites{
         Tablero tablero = new Tablero();
         Posicion posicionInicial = new Posicion(1,1);
         Barco miBarco = new Barco(1,Orientacion.HORIZONTAL);
@@ -27,7 +27,7 @@ public class PruebaTablero {
     }
 
     @Test
-    public void ponerBarcoYTraerSusPosiciones() throws ExcepcionPosicionOcupada{
+    public void ponerBarcoYTraerSusPosiciones() throws ExcepcionPosicionOcupada, ExcepcionBarcoFueraDeLimites{
         Tablero tablero = new Tablero();
         Posicion posicionInicial = new Posicion(2,2);
         Barco miBarco = new Barco(2,Orientacion.VERTICAL);
@@ -42,7 +42,7 @@ public class PruebaTablero {
     }
 
     @Test
-    public void obtenerPosicionesQueOcupariaUnBarco(){
+    public void obtenerPosicionesQueOcupariaUnBarco() throws ExcepcionBarcoFueraDeLimites{
         Tablero tablero = new Tablero();
         Posicion posicionInicial = new Posicion(3,1);
         Barco miBarco = new Barco(2,Orientacion.VERTICAL);
@@ -55,7 +55,7 @@ public class PruebaTablero {
     }
 
     @Test (expected = ExcepcionPosicionOcupada.class)
-    public void ponerUnBarcoEncimaDeOtroEnLaMismaPosicionYQueTireUnaExcepcion() throws ExcepcionPosicionOcupada{
+    public void ponerUnBarcoEncimaDeOtroEnLaMismaPosicionYQueTireUnaExcepcion() throws ExcepcionPosicionOcupada ,ExcepcionBarcoFueraDeLimites{
         Tablero tablero = new Tablero();
         Posicion posicionInicial = new Posicion(1,1);
         Barco miBarco = new Barco(1,Orientacion.VERTICAL);
@@ -66,7 +66,7 @@ public class PruebaTablero {
     }
 
     @Test
-    public void ponerDosBarcosYQueNoTireExcepcion() throws ExcepcionPosicionOcupada{
+    public void ponerDosBarcosYQueNoTireExcepcion() throws ExcepcionPosicionOcupada, ExcepcionBarcoFueraDeLimites{
         Tablero tablero = new Tablero();
         Posicion posicionInicial1 = new Posicion(1,1);
         Posicion posicionInicial2 = new Posicion(1,2);
@@ -75,15 +75,16 @@ public class PruebaTablero {
 
         tablero.agregarBarco(miBarco,posicionInicial1);
         tablero.agregarBarco(miBarco,posicionInicial2);
-
     }
 
-        @Test
-    public void llenarPosicionesDeBarcoLongitudTres(){
+    @Test (expected = ExcepcionBarcoFueraDeLimites.class)
+    public void ponerBarcoFueraDeLimitesYQueTireUnaExcepcion() throws ExcepcionPosicionOcupada ,ExcepcionBarcoFueraDeLimites{
+        Tablero tablero = new Tablero();
+        Posicion posicionInicial1 = new Posicion(9,9);
+        Barco miBarco = new Barco(2,Orientacion.VERTICAL);
 
-
+        tablero.agregarBarco(miBarco, posicionInicial1);
     }
-
 
 
 }
