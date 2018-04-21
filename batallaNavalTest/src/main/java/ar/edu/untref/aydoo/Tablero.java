@@ -18,7 +18,8 @@ public class Tablero {
                 if(posicion.getFila() == barcoActual.obtenerPosicionDeBarco(j).getFila() &&
                     posicion.getColumna() == barcoActual.obtenerPosicionDeBarco(j).getColumna())
                 {
-                    return ResultadoDeDisparo.TOCADO;
+                    ResultadoDeDisparo resultadoDeDisparo = barcoActual.responderADisparo(posicion, j);
+                    return resultadoDeDisparo;
                 }
             }
         }

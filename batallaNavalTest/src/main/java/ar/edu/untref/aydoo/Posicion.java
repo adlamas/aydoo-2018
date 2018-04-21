@@ -4,7 +4,7 @@ public class Posicion {
 
     int fila;
     int columna;
-    ParteDeBarco contenido;
+
 
     public Posicion(int fila, int columna) {
         this.fila = fila;
@@ -19,10 +19,5 @@ public class Posicion {
     public  int getColumna(){
         return  columna;
     }
-
-    public ParteDeBarco obtenerContenido(){
-        return contenido;
-    }
-
 
 }

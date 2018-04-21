@@ -17,7 +17,8 @@ public class PruebaTablero {
     }
 
     @Test
-    public void crearYPonerBarcoDeLongUnoEnPosicionUnoUno() throws ExcepcionPosicionOcupada ,ExcepcionBarcoFueraDeLimites{
+    public void crearYPonerBarcoDeLongUnoEnPosicionUnoUno() throws ExcepcionPosicionOcupada ,
+            ExcepcionBarcoFueraDeLimites{
         Tablero tablero = new Tablero();
         Posicion posicionInicial = new Posicion(1,1);
         Barco miBarco = new Barco(1,Orientacion.HORIZONTAL);
@@ -27,7 +28,8 @@ public class PruebaTablero {
     }
 
     @Test
-    public void ponerBarcoYTraerSusPosiciones() throws ExcepcionPosicionOcupada, ExcepcionBarcoFueraDeLimites{
+    public void ponerBarcoYTraerSusPosiciones() throws ExcepcionPosicionOcupada,
+            ExcepcionBarcoFueraDeLimites{
         Tablero tablero = new Tablero();
         Posicion posicionInicial = new Posicion(2,2);
         Barco miBarco = new Barco(2,Orientacion.VERTICAL);
@@ -55,7 +57,8 @@ public class PruebaTablero {
     }
 
     @Test (expected = ExcepcionPosicionOcupada.class)
-    public void ponerUnBarcoEncimaDeOtroEnLaMismaPosicionYQueTireUnaExcepcion() throws ExcepcionPosicionOcupada ,ExcepcionBarcoFueraDeLimites{
+    public void ponerUnBarcoEncimaDeOtroEnLaMismaPosicionYQueTireUnaExcepcion()
+            throws ExcepcionPosicionOcupada ,ExcepcionBarcoFueraDeLimites{
         Tablero tablero = new Tablero();
         Posicion posicionInicial = new Posicion(1,1);
         Barco miBarco = new Barco(1,Orientacion.VERTICAL);
@@ -66,7 +69,8 @@ public class PruebaTablero {
     }
 
     @Test
-    public void ponerDosBarcosYQueNoTireExcepcion() throws ExcepcionPosicionOcupada, ExcepcionBarcoFueraDeLimites{
+    public void ponerDosBarcosYQueNoTireExcepcion() throws ExcepcionPosicionOcupada
+            , ExcepcionBarcoFueraDeLimites{
         Tablero tablero = new Tablero();
         Posicion posicionInicial1 = new Posicion(1,1);
         Posicion posicionInicial2 = new Posicion(1,2);
@@ -78,7 +82,8 @@ public class PruebaTablero {
     }
 
     @Test (expected = ExcepcionBarcoFueraDeLimites.class)
-    public void ponerBarcoFueraDeLimitesYQueTireUnaExcepcion() throws ExcepcionPosicionOcupada ,ExcepcionBarcoFueraDeLimites{
+    public void ponerBarcoFueraDeLimitesYQueTireUnaExcepcion() throws ExcepcionPosicionOcupada
+            ,ExcepcionBarcoFueraDeLimites{
         Tablero tablero = new Tablero();
         Posicion posicionInicial1 = new Posicion(9,9);
         Barco miBarco = new Barco(2,Orientacion.VERTICAL);
@@ -96,7 +101,8 @@ public class PruebaTablero {
     }
 
     @Test
-    public void dispararABarcoYQueDevuelvaTocado() throws ExcepcionPosicionOcupada ,ExcepcionBarcoFueraDeLimites{
+    public void dispararABarcoYQueDevuelvaTocado() throws ExcepcionPosicionOcupada
+            ,ExcepcionBarcoFueraDeLimites{
         Tablero tablero = new Tablero();
         Posicion posicionDisparo = new Posicion(2,2);
         Posicion posicionInicial = new Posicion(2,2);
@@ -108,7 +114,8 @@ public class PruebaTablero {
     }
 
     @Test
-    public void cantidadDeBarcosAgregadosATablero() throws ExcepcionPosicionOcupada ,ExcepcionBarcoFueraDeLimites{
+    public void cantidadDeBarcosAgregadosATablero() throws ExcepcionPosicionOcupada
+            ,ExcepcionBarcoFueraDeLimites{
         Tablero tablero = new Tablero();
         Posicion posicion1 = new Posicion(2,2);
         Posicion posicion2 = new Posicion(6,6);
@@ -127,5 +134,17 @@ public class PruebaTablero {
         Assert.assertEquals(4,tablero.cantidadDeBarcosAgregados());
     }
 
+    @Test
+    public void dispararABarcoYQueDevuelvaHunido() throws ExcepcionPosicionOcupada
+            ,ExcepcionBarcoFueraDeLimites
+    {
+        Tablero tablero = new Tablero();
+        Posicion posicionDisparo = new Posicion(2,2);
+        Posicion posicionInicial = new Posicion(2,2);
+        Barco miBarco = new Barco(1,Orientacion.VERTICAL);
+        tablero.agregarBarco(miBarco,posicionInicial);
+        ResultadoDeDisparo resultadoDeDisparo = tablero.recibirDisparo(posicionDisparo);
 
+        Assert.assertEquals(ResultadoDeDisparo.HUNDIDO, resultadoDeDisparo);
+    }
 }
