@@ -104,7 +104,7 @@ public class PruebaTablero {
         tablero.agregarBarco(miBarco,posicionInicial);
         ResultadoDeDisparo resultadoDeDisparo = tablero.recibirDisparo(posicionDisparo);
 
-        //Assert.assertEquals(ResultadoDeDisparo.TOCADO, resultadoDeDisparo);
+        Assert.assertEquals(ResultadoDeDisparo.TOCADO, resultadoDeDisparo);
     }
 
     @Test

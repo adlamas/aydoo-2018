@@ -11,11 +11,13 @@ public class Tablero {
 
     public ResultadoDeDisparo recibirDisparo(Posicion posicion)
     {
+
         for (int i = 0; i < barcos.size(); i++) {
             for(int j = 0; j < barcos.get(i).longitud; j++){
-                if(posicion.equals(barcos.get(i).obtenerPosicionDeBarco(j))){
-                    System.out.println(posicion);
-                    System.out.println(barcos.get(i).obtenerPosicionDeBarco(j));
+                Barco barcoActual = barcos.get(i);
+                if(posicion.getFila() == barcoActual.obtenerPosicionDeBarco(j).getFila() &&
+                    posicion.getColumna() == barcoActual.obtenerPosicionDeBarco(j).getColumna())
+                {
                     return ResultadoDeDisparo.TOCADO;
                 }
             }
