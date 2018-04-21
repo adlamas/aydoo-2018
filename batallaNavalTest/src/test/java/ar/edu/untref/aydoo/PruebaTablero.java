@@ -16,7 +16,7 @@ public class PruebaTablero {
     }
 
     @Test
-    public void crearYPonerBarcoDeLongUnoEnPosicionUnoUnoHorizontalmente() throws Exception{
+    public void crearYPonerBarcoDeLongUnoEnPosicionUnoUno() throws Exception{
         Tablero tablero = new Tablero();
         Posicion posicionInicial = new Posicion(1,1);
         Barco miBarco = new Barco(1,Orientacion.HORIZONTAL);
@@ -31,7 +31,13 @@ public class PruebaTablero {
         Posicion posicionInicial = new Posicion(2,2);
         Barco miBarco = new Barco(2,Orientacion.VERTICAL);
 
+        tablero.agregarBarco(miBarco, posicionInicial);
+        Posicion posicionesDelBarcoYaAgregado[] = miBarco.getPosiciones();
 
+        Assert.assertEquals(2,posicionesDelBarcoYaAgregado[0].getFila());
+        Assert.assertEquals(2,posicionesDelBarcoYaAgregado[0].getColumna());
+        Assert.assertEquals(3,posicionesDelBarcoYaAgregado[1].getFila());
+        Assert.assertEquals(2,posicionesDelBarcoYaAgregado[1].getColumna());
     }
 
     @Test //No pasa aún
@@ -47,7 +53,7 @@ public class PruebaTablero {
 
     @Test
     public void obtenerPosicionesQueOcupariaUnBarco(){
-       
+
 
     }
 
