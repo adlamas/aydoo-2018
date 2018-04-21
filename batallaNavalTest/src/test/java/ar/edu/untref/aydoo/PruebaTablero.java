@@ -17,7 +17,7 @@ public class PruebaTablero {
     }
 
     @Test
-    public void crearYPonerBarcoDeLongUnoEnPosicionUnoUno() throws Exception{
+    public void crearYPonerBarcoDeLongUnoEnPosicionUnoUno() throws ExcepcionPosicionOcupada{
         Tablero tablero = new Tablero();
         Posicion posicionInicial = new Posicion(1,1);
         Barco miBarco = new Barco(1,Orientacion.HORIZONTAL);
@@ -27,7 +27,7 @@ public class PruebaTablero {
     }
 
     @Test
-    public void ponerBarcoYTraerSusPosiciones() throws Exception{
+    public void ponerBarcoYTraerSusPosiciones() throws ExcepcionPosicionOcupada{
         Tablero tablero = new Tablero();
         Posicion posicionInicial = new Posicion(2,2);
         Barco miBarco = new Barco(2,Orientacion.VERTICAL);
@@ -54,12 +54,31 @@ public class PruebaTablero {
         Assert.assertEquals(1,posiciones[1].getColumna());
     }
 
-    @Test //No pasa aún
-    public void ponerUnBarcoEncimaDeOtroEnLaMismaPosicionYQueTireUnaExcepcion() throws Exception{
+    @Test (expected = ExcepcionPosicionOcupada.class)
+    public void ponerUnBarcoEncimaDeOtroEnLaMismaPosicionYQueTireUnaExcepcion() throws ExcepcionPosicionOcupada{
+        Tablero tablero = new Tablero();
+        Posicion posicionInicial = new Posicion(1,1);
+        Barco miBarco = new Barco(1,Orientacion.VERTICAL);
+        Barco miBarco2 = new Barco(1,Orientacion.VERTICAL);
 
+        tablero.agregarBarco(miBarco, posicionInicial);
+        tablero.agregarBarco(miBarco2,posicionInicial);
     }
 
     @Test
+    public void ponerDosBarcosYQueNoTireExcepcion() throws ExcepcionPosicionOcupada{
+        Tablero tablero = new Tablero();
+        Posicion posicionInicial1 = new Posicion(1,1);
+        Posicion posicionInicial2 = new Posicion(1,2);
+        Barco miBarco = new Barco(2,Orientacion.VERTICAL);
+        Barco miBarco2 = new Barco(2,Orientacion.HORIZONTAL);
+
+        tablero.agregarBarco(miBarco,posicionInicial1);
+        tablero.agregarBarco(miBarco,posicionInicial2);
+
+    }
+
+        @Test
     public void llenarPosicionesDeBarcoLongitudTres(){
 
 

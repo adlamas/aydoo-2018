@@ -16,7 +16,7 @@ public class Tablero {
         return ResultadoDeDisparo.AGUA;
     }
 
-    public void agregarBarco(Barco mibarco, Posicion posicionInicial) throws Exception{
+    public void agregarBarco(Barco mibarco, Posicion posicionInicial) throws ExcepcionPosicionOcupada{
 
         this.verificarQueLasPosicionesQueSeanValidas(mibarco,posicionInicial);
         mibarco.llenarPosiciones(posicionInicial);
@@ -29,7 +29,7 @@ public class Tablero {
     }
 
 
-    public void verificarQueLasPosicionesQueSeanValidas(Barco barcoNuevo, Posicion posIni) throws Exception{
+    public void verificarQueLasPosicionesQueSeanValidas(Barco barcoNuevo, Posicion posIni) throws ExcepcionPosicionOcupada{
 
         Posicion posicionesDeBarcoQueOcuparia[] = calcularPosicionesQueOcupariaUnBarco(barcoNuevo, posIni);
         for (int i = 0; i < barcos.size(); i++) {
@@ -44,7 +44,7 @@ public class Tablero {
                             posicionesQueOcupaCadaBarcoEnElTablero[h].getColumna()
                     )
                     {
-                        throw new Exception("Posicion ocupada");
+                        throw new ExcepcionPosicionOcupada("Esta posicion ya esta siendo ocupada, pone el barco en otro lado");
                     }
                 }
             }
