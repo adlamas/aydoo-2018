@@ -16,10 +16,10 @@ public class Tablero {
         return ResultadoDeDisparo.AGUA;
     }
 
-    public void agregarBarco(Barco mibarco) throws Exception{
+    public void agregarBarco(Barco mibarco, Posicion posicionInicial) throws Exception{
 
-        this.verificarQueLasPosicionesQueSeanValidas(mibarco);
-        mibarco.llenarPosiciones();
+        this.verificarQueLasPosicionesQueSeanValidas(mibarco,posicionInicial);
+        mibarco.llenarPosiciones(posicionInicial);
         barcos.add(mibarco);
 
     }
@@ -29,15 +29,21 @@ public class Tablero {
     }
 
 
-    public void verificarQueLasPosicionesQueSeanValidas(Barco barco) throws Exception{
+    public void verificarQueLasPosicionesQueSeanValidas(Barco barcoNuevo, Posicion posIni) throws Exception{
 
-        Posicion posicionesDeBarcoQueOcuparia[] = calcularPosicionesQueOcupariaUnBarco(barco);
+        Posicion posicionesDeBarcoQueOcuparia[] = calcularPosicionesQueOcupariaUnBarco(barcoNuevo, posIni);
         for (int i = 0; i < barcos.size(); i++) {
-            Posicion posicionesQueOcupaCadaBarco[] = barcos.get(i).getPosiciones();
-            for(int j = 0; j < barco.obtenerLongitud(); j++){
-                for(int h = 0; h < posicionesQueOcupaCadaBarco.length; h++){
-                    if(posicionesDeBarcoQueOcuparia[j].getFila() == posicionesQueOcupaCadaBarco[h].getFila() &&
-                        posicionesDeBarcoQueOcuparia[j].getColumna() == posicionesQueOcupaCadaBarco[h].getColumna()){
+            Posicion posicionesQueOcupaCadaBarcoEnElTablero[] = barcos.get(i).getPosiciones();
+            for(int j = 0; j < barcoNuevo.obtenerLongitud(); j++){
+                for(int h = 0; h < posicionesQueOcupaCadaBarcoEnElTablero.length; h++){
+                    if(
+                            posicionesDeBarcoQueOcuparia[j].getFila() ==
+                            posicionesQueOcupaCadaBarcoEnElTablero[h].getFila()
+                            &&
+                            posicionesDeBarcoQueOcuparia[j].getColumna() ==
+                            posicionesQueOcupaCadaBarcoEnElTablero[h].getColumna()
+                    )
+                    {
                         throw new Exception("Posicion ocupada");
                     }
                 }
@@ -46,20 +52,19 @@ public class Tablero {
         }
     }
 
-    public Posicion[] calcularPosicionesQueOcupariaUnBarco(Barco barco)
+    public Posicion[] calcularPosicionesQueOcupariaUnBarco(Barco barco, Posicion posicionInicial)
     {
         Posicion posicionesDeBarcoQueOcuparia[] = new Posicion[barco.obtenerLongitud()];
-        posicionesDeBarcoQueOcuparia[0] = barco.obtenerPosicionDeBarco(0);
-        for(int i = 1; i < barco.obtenerLongitud(); i++)
+        for(int i = 0; i < barco.obtenerLongitud(); i++)
         {
             if(barco.getOrientacion() == Orientacion.HORIZONTAL){
-                int fila = barco.obtenerPosicionDeBarco(0 ).getFila();
-                int columna = barco.obtenerPosicionDeBarco(0).getColumna() + i;
+                int fila = posicionInicial.getFila();
+                int columna = posicionInicial.getColumna() + i;
                 posicionesDeBarcoQueOcuparia[i] = new Posicion(fila,columna);
             }
             else if (barco.getOrientacion() == Orientacion.VERTICAL){
-                int fila = barco.obtenerPosicionDeBarco(0 ).getFila() +i;
-                int columna = barco.obtenerPosicionDeBarco(0).getColumna();
+                int fila = posicionInicial.getFila() +i;
+                int columna = posicionInicial.getColumna();
                 posicionesDeBarcoQueOcuparia[i] = new Posicion(fila,columna);
             }
 

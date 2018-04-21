@@ -6,33 +6,29 @@ public class Barco {
     int longitud;
     Posicion posiciones[];
 
-    public Barco( int longitud, Posicion posInicial, Orientacion orientacion){
+    public Barco( int longitud, Orientacion orientacion){
         this.orientacion = orientacion;
         this.longitud = longitud;
         posiciones = new Posicion[longitud];
-        posiciones[0] = posInicial;
-        llenarPosiciones();
     }
 
-    public void llenarPosiciones(){
+    public void llenarPosiciones(Posicion posicionInicial){
         if(this.getOrientacion() == Orientacion.HORIZONTAL){
-            llenarPosicionesHorizontales();
+            llenarPosicionesHorizontales(posicionInicial);
         }else if(this.getOrientacion() == Orientacion.VERTICAL){
-            llenarPosicionesVerticales();
+            llenarPosicionesVerticales(posicionInicial);
         }
     }
 
-    private void llenarPosicionesHorizontales(){
-        for(int i = 1; i < longitud; i++){
-            posiciones[i] = new Posicion(this.obtenerPosicionDeBarco(0).getFila(),
-                    this.obtenerPosicionDeBarco(0).getColumna() + i);
+    private void llenarPosicionesHorizontales(Posicion posIni){
+        for(int i = 0; i < longitud; i++){
+            posiciones[i] = new Posicion(posIni.getFila(),posIni.getColumna() + i);
         }
     }
 
-    private void llenarPosicionesVerticales(){
-        for(int i = 1; i < longitud; i++){
-            posiciones[i] = new Posicion(this.obtenerPosicionDeBarco(0).getFila() + i,
-                    this.obtenerPosicionDeBarco(0).getColumna() );
+    private void llenarPosicionesVerticales( Posicion posIni){
+        for(int i = 0; i < longitud; i++){
+            posiciones[i] = new Posicion(posIni.getFila() + i,posIni.getColumna() );
         }
     }
 
