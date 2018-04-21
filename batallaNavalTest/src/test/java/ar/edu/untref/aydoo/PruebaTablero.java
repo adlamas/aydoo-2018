@@ -86,5 +86,14 @@ public class PruebaTablero {
         tablero.agregarBarco(miBarco, posicionInicial1);
     }
 
+    @Test
+    public void dispararATableroYQueDevuelvaAgua(){
+        Tablero tablero = new Tablero();
+        Posicion posicionDisparo = new Posicion(2,2);
+        ResultadoDeDisparo resultadoDeDisparo = tablero.recibirDisparo(posicionDisparo);
+
+        Assert.assertEquals(ResultadoDeDisparo.AGUA, resultadoDeDisparo);
+    }
+
 
 }
