@@ -95,5 +95,37 @@ public class PruebaTablero {
         Assert.assertEquals(ResultadoDeDisparo.AGUA, resultadoDeDisparo);
     }
 
+    @Test
+    public void dispararABarcoYQueDevuelvaTocado() throws ExcepcionPosicionOcupada ,ExcepcionBarcoFueraDeLimites{
+        Tablero tablero = new Tablero();
+        Posicion posicionDisparo = new Posicion(2,2);
+        Posicion posicionInicial = new Posicion(2,2);
+        Barco miBarco = new Barco(2,Orientacion.VERTICAL);
+        tablero.agregarBarco(miBarco,posicionInicial);
+        ResultadoDeDisparo resultadoDeDisparo = tablero.recibirDisparo(posicionDisparo);
+
+        //Assert.assertEquals(ResultadoDeDisparo.TOCADO, resultadoDeDisparo);
+    }
+
+    @Test
+    public void cantidadDeBarcosAgregadosATablero() throws ExcepcionPosicionOcupada ,ExcepcionBarcoFueraDeLimites{
+        Tablero tablero = new Tablero();
+        Posicion posicion1 = new Posicion(2,2);
+        Posicion posicion2 = new Posicion(6,6);
+        Posicion posicion3 = new Posicion(3,3);
+        Posicion posicion4 = new Posicion(9,9);
+        Barco miBarco1 = new Barco(2,Orientacion.VERTICAL);
+        Barco miBarco2 = new Barco(2,Orientacion.VERTICAL);
+        Barco miBarco3 = new Barco(2,Orientacion.HORIZONTAL);
+        Barco miBarco4 = new Barco(1,Orientacion.HORIZONTAL);
+
+        tablero.agregarBarco(miBarco1,posicion1);
+        tablero.agregarBarco(miBarco2,posicion2);
+        tablero.agregarBarco(miBarco3,posicion3);
+        tablero.agregarBarco(miBarco4,posicion4);
+
+        Assert.assertEquals(4,tablero.cantidadDeBarcosAgregados());
+    }
+
 
 }

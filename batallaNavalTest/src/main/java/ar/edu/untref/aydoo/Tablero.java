@@ -6,12 +6,20 @@ import java.util.Iterator;
 public class Tablero {
 
     private ArrayList<Barco> barcos = new ArrayList<Barco>();
-    private Iterator iterador = barcos.listIterator();
     int filasTotales = 10;
     int columnasTotales = 10;
 
     public ResultadoDeDisparo recibirDisparo(Posicion posicion)
     {
+        for (int i = 0; i < barcos.size(); i++) {
+            for(int j = 0; j < barcos.get(i).longitud; j++){
+                if(posicion.equals(barcos.get(i).obtenerPosicionDeBarco(j))){
+                    System.out.println(posicion);
+                    System.out.println(barcos.get(i).obtenerPosicionDeBarco(j));
+                    return ResultadoDeDisparo.TOCADO;
+                }
+            }
+        }
         return ResultadoDeDisparo.AGUA;
     }
 
@@ -74,6 +82,10 @@ public class Tablero {
             }
         }
         return posicionesDeBarcoQueOcuparia;
+    }
+
+    public int cantidadDeBarcosAgregados(){
+        return this.barcos.size();
     }
 
 }
