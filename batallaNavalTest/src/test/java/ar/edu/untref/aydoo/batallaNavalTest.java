@@ -1,5 +1,6 @@
 package ar.edu.untref.aydoo;
 
+import javafx.geometry.Pos;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -173,6 +174,13 @@ public class batallaNavalTest {
         Assert.assertEquals(Orientacion.VERTICAL,barco.getOrientacion());
     }
 
-    
+    @Test
+    public void crearPosicionYDevolverSuFilaYColumna(){
+        Posicion posicion = new Posicion(3,4);
+
+        Assert.assertEquals(3,posicion.getFila());
+        Assert.assertEquals(4,posicion.getColumna());
+    }
+
 
 }
