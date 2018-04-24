@@ -182,5 +182,16 @@ public class batallaNavalTest {
         Assert.assertEquals(4,posicion.getColumna());
     }
 
+    @Test
+    public void crearPosicionDeBarcoYDevolverSuFilaColumnaYEstado(){
+        PosicionDeBarco posicion = new PosicionDeBarco(3,4);
+
+        Assert.assertEquals(3,posicion.getFila());
+        Assert.assertEquals(4,posicion.getColumna());
+        Assert.assertEquals(false,posicion.posicionTocada());
+    }
+
+
+
 
 }
