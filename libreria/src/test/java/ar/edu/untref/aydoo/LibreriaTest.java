@@ -14,16 +14,13 @@ public class LibreriaTest {
     }
 
     @Test
-    public void crearClientesYAsignarlesID(){
+    public void crearUnClienteYUnaCuentaYAsignarDatosAlCliente(){
 
         Cliente cliente1 = new Cliente();
-        Cliente cliente2 = new Cliente();
-        Cliente cliente3 = new Cliente();
+        CuentaCorriente cuenta = new CuentaCorriente();
+        cliente1.setCuentaCorriente(cuenta);
 
-        Assert.assertEquals(1, cliente1.obtenerID());
-        Assert.assertEquals(2, cliente2.obtenerID());
-        Assert.assertEquals(3, cliente3.obtenerID());
-
+        Assert.assertEquals(cuenta,cliente1.getCuentaCorriente());
     }
 
 

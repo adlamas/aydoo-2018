@@ -11,11 +11,11 @@ public class Libreria {
 
     }
 
-    public void agregarCliente(int cliente_id){
+    public void agregarCliente(Cliente cliente){
 
     }
 
-    public void cobrarAnio(Date fecha, int cliente_id){
+    public void cobrarAnio(Date fecha,Cliente cliente){
 
     }
 }

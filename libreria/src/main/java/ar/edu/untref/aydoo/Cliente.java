@@ -2,15 +2,14 @@ package ar.edu.untref.aydoo;
 
 public class Cliente {
 
-    private static int listaID = 1;
-    private int id_cliente;
+    private CuentaCorriente cuentaCorriente = new CuentaCorriente();
 
-    public Cliente(){
-        id_cliente = listaID;
-        listaID++;
+    public void setCuentaCorriente(CuentaCorriente cuenta){
+        this.cuentaCorriente = cuenta;
+
     }
 
-    public int obtenerID(){
-        return id_cliente;
+    public CuentaCorriente getCuentaCorriente() {
+        return cuentaCorriente;
     }
 }
