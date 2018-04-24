@@ -145,4 +145,16 @@ public class batallaNavalTest {
 
         Assert.assertEquals(ResultadoDeDisparo.HUNDIDO, resultadoDeDisparo);
     }
+
+    @Test
+    public void crearUnBarcoYQueSeCree(){
+
+        Orientacion orientacionBarco = Orientacion.VERTICAL;
+        Barco barco = new Barco(2,orientacionBarco);
+
+        Assert.assertNotNull(barco);
+
+    }
+
+    
 }
