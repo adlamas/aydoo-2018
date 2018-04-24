@@ -173,4 +173,6 @@ public class batallaNavalTest {
         Assert.assertEquals(Orientacion.VERTICAL,barco.getOrientacion());
     }
 
+    
+
 }
