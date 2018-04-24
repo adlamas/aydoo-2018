@@ -1,5 +1,6 @@
 package ar.edu.untref.aydoo;
 
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -30,9 +31,25 @@ public class LibreriaTest {
         Direccion direccion = new Direccion("Calle falsa", 123);
         cliente.setDireccion(direccion);
 
-       Direccion direccionCliente = cliente.getDireccion();
-       Assert.assertEquals(direccion,direccionCliente);
+        Direccion direccionCliente = cliente.getDireccion();
+        Assert.assertEquals(direccion,direccionCliente);
 
     }
 
+    @Test
+    public void AgregarProductosACuentaCorrienteYQueQueden(){
+
+    CuentaCorriente Cuenta = new CuentaCorriente();
+    Producto Maestria = new Producto(500);
+    Producto cuaderno = new Producto(50);
+
+    Cuenta.agregarProducto(Maestria);
+    Cuenta.agregarProducto(cuaderno);
+
+    Assert.assertEquals(Maestria, Cuenta.devolverProducto(0));
+    Assert.assertEquals(cuaderno, Cuenta.devolverProducto(1));
+
+    }
+
+    
 }
