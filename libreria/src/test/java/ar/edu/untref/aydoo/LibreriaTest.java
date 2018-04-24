@@ -14,7 +14,7 @@ public class LibreriaTest {
     }
 
     @Test
-    public void crearUnClienteYUnaCuentaYAsignarDatosAlCliente(){
+    public void crearUnClienteYUnaCuentaYAsignarCuentaAlCliente(){
 
         Cliente cliente1 = new Cliente();
         CuentaCorriente cuenta = new CuentaCorriente();
@@ -23,5 +23,16 @@ public class LibreriaTest {
         Assert.assertEquals(cuenta,cliente1.getCuentaCorriente());
     }
 
+    @Test
+    public void asignarDireccionACliente(){
+
+        Cliente cliente = new Cliente();
+        Direccion direccion = new Direccion("Calle falsa", 123);
+        cliente.setDireccion(direccion);
+
+       Direccion direccionCliente = cliente.getDireccion();
+       Assert.assertEquals(direccion,direccionCliente);
+
+    }
 
 }

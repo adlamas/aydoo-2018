@@ -5,6 +5,7 @@ import java.util.LinkedList;
 
 public class Libreria {
 
+
     private LinkedList<Cliente> clientes = new LinkedList<Cliente>();
 
     public void cobrarMes(Date fecha, Cliente cliente){
