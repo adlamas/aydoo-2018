@@ -39,17 +39,30 @@ public class LibreriaTest {
     @Test
     public void AgregarProductosACuentaCorrienteYQueQueden(){
 
-    CuentaCorriente Cuenta = new CuentaCorriente();
-    Producto Maestria = new Producto(500);
-    Producto cuaderno = new Producto(50);
+        CuentaCorriente Cuenta = new CuentaCorriente();
+        Producto Maestria = new Producto(500);
+        Producto cuaderno = new Producto(50);
 
-    Cuenta.agregarProducto(Maestria);
-    Cuenta.agregarProducto(cuaderno);
+        Cuenta.agregarProducto(Maestria);
+        Cuenta.agregarProducto(cuaderno);
 
-    Assert.assertEquals(Maestria, Cuenta.devolverProducto(0));
-    Assert.assertEquals(cuaderno, Cuenta.devolverProducto(1));
+        Assert.assertEquals(Maestria, Cuenta.devolverProducto(0));
+        Assert.assertEquals(cuaderno, Cuenta.devolverProducto(1));
 
     }
 
-    
+    @Test
+    public void CrearProductoYDevolverComponentes(){
+
+        Periodico periodico = new Periodico(500 , 1);
+        ArtLibreria artLibreria = new ArtLibreria(400, 15);
+
+        int periodicidad = periodico.getPeriodicidad();
+        int IVA = artLibreria.getIVA();
+
+        Assert.assertEquals(1, periodicidad);
+        Assert.assertEquals(15, IVA);
+
+    }
+
 }
