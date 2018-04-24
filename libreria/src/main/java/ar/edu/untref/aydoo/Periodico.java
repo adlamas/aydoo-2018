@@ -11,4 +11,6 @@ public class Periodico extends Producto {
     public int getPeriodicidad(){
         return periodicidad;
     }
+
+
 }

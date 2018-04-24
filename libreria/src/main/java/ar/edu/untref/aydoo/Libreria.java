@@ -1,5 +1,6 @@
 package ar.edu.untref.aydoo;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.LinkedList;
 
@@ -8,7 +9,7 @@ public class Libreria {
 
     private LinkedList<Cliente> clientes = new LinkedList<Cliente>();
 
-    public void cobrarMes(Date fecha, Cliente cliente){
+    public void cobrarMes(Calendar fecha, Cliente cliente){
 
     }
 
@@ -16,7 +17,7 @@ public class Libreria {
 
     }
 
-    public void cobrarAnio(Date fecha,Cliente cliente){
+    public void cobrarAnio(Calendar fecha,Cliente cliente){
 
     }
 }

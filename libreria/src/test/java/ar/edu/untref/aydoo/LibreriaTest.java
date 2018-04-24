@@ -4,6 +4,9 @@ package ar.edu.untref.aydoo;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.Calendar;
+import java.util.Date;
+
 public class LibreriaTest {
 
     @Test
@@ -52,7 +55,7 @@ public class LibreriaTest {
     }
 
     @Test
-    public void CrearProductoYDevolverComponentes(){
+    public void CrearProductosYDevolverComponentes(){
 
         Periodico periodico = new Periodico(500 , 1);
         ArtLibreria artLibreria = new ArtLibreria(400, 15);
@@ -62,6 +65,27 @@ public class LibreriaTest {
 
         Assert.assertEquals(1, periodicidad);
         Assert.assertEquals(15, IVA);
+        Assert.assertEquals(500,periodico.getPrecio());
+        Assert.assertEquals(400,artLibreria.getPrecio());
+
+    }
+
+    @Test
+    public void clienteRealizaUnaCompraDeUnProducto(){
+
+        Cliente cliente = new Cliente();
+        Producto producto = new Producto(250);
+
+        Calendar ahoraCal = Calendar.getInstance();
+        ahoraCal.set(2007,1,13);
+        Compra compra = new Compra(cliente,producto, ahoraCal);
+
+        Assert.assertEquals(cliente, compra.obtenerComprador());
+        Assert.assertEquals(producto, compra.obtenerProducto());
+        Assert.assertEquals(13, compra.obtenerDia());
+        Assert.assertEquals(1, compra.obtenerMes());
+        Assert.assertEquals(2007, compra.obtenerAnio());
+
 
     }
 

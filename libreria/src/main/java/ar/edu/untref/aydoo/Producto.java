@@ -6,4 +6,8 @@ public class Producto {
     public Producto(int precio){
         this.precio = precio;
     }
+
+    public int getPrecio(){
+        return precio;
+    }
 }
