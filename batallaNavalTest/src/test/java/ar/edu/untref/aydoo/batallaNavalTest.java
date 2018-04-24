@@ -1,12 +1,10 @@
 package ar.edu.untref.aydoo;
 
-import cucumber.api.java.cs.A;
-import javafx.geometry.Pos;
 import org.junit.Assert;
 import org.junit.Test;
 
 
-public class PruebaTablero {
+public class batallaNavalTest {
 
     @Test
     public void pruebaDispararATableroVacioDevuelveAgua(){
@@ -23,8 +21,8 @@ public class PruebaTablero {
         Posicion posicionInicial = new Posicion(1,1);
         Barco miBarco = new Barco(1,Orientacion.HORIZONTAL);
 
-       tablero.agregarBarco(miBarco, posicionInicial);
-       Assert.assertEquals(miBarco, tablero.obtenerBarco(0));
+        tablero.agregarBarco(miBarco, posicionInicial);
+        Assert.assertEquals(miBarco, tablero.obtenerBarco(0));
     }
 
     @Test
