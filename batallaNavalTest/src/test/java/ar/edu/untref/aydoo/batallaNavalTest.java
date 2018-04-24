@@ -1,6 +1,5 @@
 package ar.edu.untref.aydoo;
 
-import javafx.geometry.Pos;
 import org.junit.Assert;
 import org.junit.Test;
 
