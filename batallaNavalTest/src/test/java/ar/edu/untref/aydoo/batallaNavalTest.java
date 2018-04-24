@@ -191,6 +191,14 @@ public class batallaNavalTest {
         Assert.assertEquals(false,posicion.posicionTocada());
     }
 
+    @Test
+    public void  crearPosicionDeBarcoYTocar(){
+        PosicionDeBarco posicion = new PosicionDeBarco(3,4);
+        posicion.tocarPosicion();
+
+        Assert.assertEquals(true,posicion.posicionTocada());
+    }
+
 
 
 
