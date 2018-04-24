@@ -165,5 +165,12 @@ public class batallaNavalTest {
         Assert.assertEquals(2,barco.obtenerLongitud());
     }
 
-    
+    @Test
+    public void crearUnBarcoYTestearSuOrientacion(){
+        Orientacion orientacionBarco = Orientacion.VERTICAL;
+        Barco barco = new Barco(2,orientacionBarco);
+
+        Assert.assertEquals(Orientacion.VERTICAL,barco.getOrientacion());
+    }
+
 }
