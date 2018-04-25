@@ -38,7 +38,7 @@ public class LibreriaTest {
     }
 
     @Test
-    public void comprarProducto(){
+    public void comprarProductoYAgregarACuentaCorriente(){
 
         Cliente comprador = new Cliente();
         Producto producto1 = new Producto(400);
@@ -54,11 +54,6 @@ public class LibreriaTest {
         Assert.assertEquals(compra, comprador.getCuentaCorriente().devolverCompra(0));
     }
 
-    @Test
-    public void AgregarComprasACuentaCorriente(){
-        
-
-    }
 
     @Test
     public void CrearProductosYDevolverComponentes(){
@@ -76,23 +71,6 @@ public class LibreriaTest {
 
     }
 
-    @Test
-    public void clienteRealizaUnaCompraDeUnProducto(){
-
-        Cliente cliente = new Cliente();
-        Producto producto = new Producto(250);
-
-        Calendar ahoraCal = Calendar.getInstance();
-        ahoraCal.set(2007,1,13);
-        Compra compra = new Compra(cliente,producto, ahoraCal);
-
-        Assert.assertEquals(cliente, compra.obtenerComprador());
-        Assert.assertEquals(producto, compra.obtenerProducto());
-        Assert.assertEquals(13, compra.obtenerDia());
-        Assert.assertEquals(1, compra.obtenerMes());
-        Assert.assertEquals(2007, compra.obtenerAnio());
-
-    }
 
     @Test
     public void realizarSuscripcionYObtenerSusDatos(){
@@ -108,6 +86,22 @@ public class LibreriaTest {
         Assert.assertEquals(15, suscripcionPeriodicoMensual.obtenerDia());
         Assert.assertEquals(3, suscripcionPeriodicoMensual.obtenerMes());
         Assert.assertEquals(2009, suscripcionPeriodicoMensual.obtenerAnio());
+
+    }
+
+    @Test
+    public void devolverComprasDeUnMes(){
+
+        Cliente comprador = new Cliente();
+        Producto producto1 = new Producto(450);
+        Producto producto2 = new Producto(600);
+        Calendar fecha = Calendar.getInstance();
+        fecha.set(2009,3,15);
+        comprador.comprarProducto(producto1, fecha);
+        fecha.set(2009, 3, 21);
+        comprador.comprarProducto(producto2, fecha);
+
+        Assert.assertEquals(1050, comprador.devolverComprasDelMes(fecha));
 
     }
 

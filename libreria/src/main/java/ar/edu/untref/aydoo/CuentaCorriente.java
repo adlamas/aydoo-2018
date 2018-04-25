@@ -1,13 +1,18 @@
 package ar.edu.untref.aydoo;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class CuentaCorriente {
 
-    LinkedList<Compra> compras = new LinkedList<Compra>();
+    ArrayList<Compra> compras = new ArrayList<Compra>();
 
     public CuentaCorriente(){
 
+    }
+
+    public int getCantidadDeCompras(){
+        return compras.size();
     }
 
     public void agregarCompra(Compra compra){
