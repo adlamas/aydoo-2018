@@ -1,9 +1,9 @@
 package ar.edu.untref.aydoo;
 
 
+import cucumber.api.java.ca.Cal;
 import org.junit.Assert;
 import org.junit.Test;
-
 import java.util.Calendar;
 
 
@@ -85,6 +85,23 @@ public class LibreriaTest {
         Assert.assertEquals(13, compra.obtenerDia());
         Assert.assertEquals(1, compra.obtenerMes());
         Assert.assertEquals(2007, compra.obtenerAnio());
+
+    }
+
+    @Test
+    public void realizarSuscripcionYObtenerSusDatos(){
+        Cliente cliente = new Cliente();
+        Periodico periodicoMensual = new Periodico(650, 2);
+        Calendar fecha = Calendar.getInstance();
+        fecha.set(2009,3,15);
+
+        Suscripcion suscripcionPeriodicoMensual = new Suscripcion(cliente,periodicoMensual, fecha);
+
+        Assert.assertEquals(cliente,suscripcionPeriodicoMensual.getCliente());
+        Assert.assertEquals(periodicoMensual,suscripcionPeriodicoMensual.getProductoPeriodico());
+        Assert.assertEquals(15, suscripcionPeriodicoMensual.obtenerDia());
+        Assert.assertEquals(3, suscripcionPeriodicoMensual.obtenerMes());
+        Assert.assertEquals(2009, suscripcionPeriodicoMensual.obtenerAnio());
 
 
     }
