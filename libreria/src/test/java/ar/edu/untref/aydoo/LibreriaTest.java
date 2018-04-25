@@ -1,7 +1,5 @@
 package ar.edu.untref.aydoo;
 
-
-import cucumber.api.java.ca.Cal;
 import org.junit.Assert;
 import org.junit.Test;
 import java.util.Calendar;
@@ -40,17 +38,25 @@ public class LibreriaTest {
     }
 
     @Test
-    public void AgregarProductosACuentaCorrienteYQueQueden(){
+    public void comprarProducto(){
 
-        CuentaCorriente Cuenta = new CuentaCorriente();
-        Producto Maestria = new Producto(500);
-        Producto cuaderno = new Producto(50);
+        Cliente comprador = new Cliente();
+        Producto producto1 = new Producto(400);
+        Calendar fecha = Calendar.getInstance();
+        fecha.set(2009,3,15);
+        Compra compra = comprador.comprarProducto(producto1, fecha);
 
-        Cuenta.agregarProducto(Maestria);
-        Cuenta.agregarProducto(cuaderno);
+        Assert.assertEquals(comprador, compra.obtenerComprador());
+        Assert.assertEquals(producto1, compra.obtenerProducto());
+        Assert.assertEquals(15, compra.obtenerDia());
+        Assert.assertEquals(3, compra.obtenerMes());
+        Assert.assertEquals(2009, compra.obtenerAnio());
+        Assert.assertEquals(compra, comprador.getCuentaCorriente().devolverCompra(0));
+    }
 
-        Assert.assertEquals(Maestria, Cuenta.devolverProducto(0));
-        Assert.assertEquals(cuaderno, Cuenta.devolverProducto(1));
+    @Test
+    public void AgregarComprasACuentaCorriente(){
+        
 
     }
 
@@ -103,7 +109,8 @@ public class LibreriaTest {
         Assert.assertEquals(3, suscripcionPeriodicoMensual.obtenerMes());
         Assert.assertEquals(2009, suscripcionPeriodicoMensual.obtenerAnio());
 
-
     }
+
+
 
 }

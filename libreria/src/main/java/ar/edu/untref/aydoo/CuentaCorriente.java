@@ -4,17 +4,17 @@ import java.util.LinkedList;
 
 public class CuentaCorriente {
 
-    LinkedList<Producto> productos = new LinkedList<Producto>();
+    LinkedList<Compra> compras = new LinkedList<Compra>();
 
     public CuentaCorriente(){
 
     }
 
-    public void agregarProducto(Producto producto){
-        productos.add(producto);
+    public void agregarCompra(Compra compra){
+        compras.add(compra);
     }
 
-    public Producto devolverProducto(int indice){
-        return productos.get(indice);
+    public Compra devolverCompra(int indice){
+        return compras.get(indice);
     }
 }
