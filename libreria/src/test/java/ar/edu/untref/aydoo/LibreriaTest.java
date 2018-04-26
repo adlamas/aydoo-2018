@@ -148,7 +148,36 @@ public class LibreriaTest {
 
     }
 
-   
+    @Test
+    public void cobrarSuscripcionesDeMes(){
+
+        Libreria libreria = new Libreria();
+        Cliente comprador = new Cliente();
+        Periodico revistaGente = new Periodico(1100, 1);
+        Periodico diarioOLE = new Periodico(850, 1);
+        Periodico semanalEconomico = new Periodico(900, 4);
+
+        Calendar fechaRevistaGente = Calendar.getInstance();
+        Calendar fechaDiarioOLE = Calendar.getInstance();
+        Calendar fechaSemanalEconomico = Calendar.getInstance();
+
+        fechaRevistaGente.set(2009,3,15);
+        fechaDiarioOLE.set(2009, 3, 21);
+        fechaSemanalEconomico.set(2009, 3, 26);
+
+        comprador.suscribirse(revistaGente, fechaRevistaGente);
+        comprador.suscribirse(diarioOLE, fechaDiarioOLE);
+        comprador.suscribirse(semanalEconomico,fechaSemanalEconomico);
+
+        libreria.agregarCliente(comprador);
+
+        Calendar fechaAVer = Calendar.getInstance();
+        fechaAVer.set(2009,3, 30);
+
+        Assert.assertEquals(2850, comprador.obtenerSuscripcionesDeUnMes(fechaAVer));
+    }
+
+
 
 
 }

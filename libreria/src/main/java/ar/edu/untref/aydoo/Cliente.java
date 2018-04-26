@@ -57,4 +57,15 @@ public class Cliente {
     public Suscripcion obtenerSuscripcion(int indice){
         return this.suscripciones.get(indice);
     }
+
+    public int obtenerSuscripcionesDeUnMes(Calendar fecha){
+        int suma = 0;
+        for(int i = 0; i < this.suscripciones.size(); i++){
+            if(this.suscripciones.get(i).obtenerAnio() == fecha.get(Calendar.YEAR)
+                    && this.suscripciones.get(i).obtenerMes() == fecha.get(Calendar.MONTH)){
+                suma += suscripciones.get(i).productoPeriodico.getPrecio();
+            }
+        }
+        return suma;
+    }
 }
