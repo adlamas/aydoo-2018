@@ -16,7 +16,6 @@ public class Cliente {
 
     public void setCuentaCorriente(CuentaCorriente cuenta){
         this.cuentaCorriente = cuenta;
-
     }
 
     public CuentaCorriente getCuentaCorriente() {
