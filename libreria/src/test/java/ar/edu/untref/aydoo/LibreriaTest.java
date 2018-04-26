@@ -38,7 +38,7 @@ public class LibreriaTest {
     }
 
     @Test
-    public void comprarProductoYAgregarACuentaCorriente(){
+    public void comprarProductoYAgregarCompraACuentaCorriente(){
 
         Cliente comprador = new Cliente();
         Producto producto1 = new Producto(400);
@@ -101,10 +101,24 @@ public class LibreriaTest {
         fecha.set(2009, 3, 21);
         comprador.comprarProducto(producto2, fecha);
 
-        Assert.assertEquals(1050, comprador.devolverComprasDelMes(fecha));
+        Assert.assertEquals(1050, comprador.devolverComprasDelMes(fecha, comprador.clienteRegistrado()));
 
     }
 
+    @Test
+    public void devolverComprasDeUnMesConDescuento(){
+        Cliente comprador = new Cliente();
+        Producto producto1 = new Producto(400);
+        Producto producto2 = new Producto(600);
+        Calendar fecha = Calendar.getInstance();
+        comprador.registrarseEnSistema();
+        fecha.set(2009,3,15);
+        comprador.comprarProducto(producto1, fecha);
+        fecha.set(2009, 3, 21);
+        comprador.comprarProducto(producto2, fecha);
+
+        Assert.assertEquals(950, comprador.devolverComprasDelMes(fecha, comprador.clienteRegistrado()));
+    }
 
 
 }

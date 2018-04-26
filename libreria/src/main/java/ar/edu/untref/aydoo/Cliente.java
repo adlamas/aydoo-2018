@@ -6,6 +6,7 @@ public class Cliente {
 
     CuentaCorriente cuentaCorriente = new CuentaCorriente();
     private Direccion direccion;
+    private Registro registroDelSistema = new Registro();
 
     public void setDireccion(Direccion direccion) {
         this.direccion = direccion;
@@ -31,15 +32,19 @@ public class Cliente {
         return compra;
     }
 
-    public int devolverComprasDelMes(Calendar fecha){
+    public int devolverComprasDelMes(Calendar fecha, boolean registro){
 
-        int suma = 0;
-        for(int i = 0; i < cuentaCorriente.getCantidadDeCompras(); i++){
-            if(cuentaCorriente.devolverCompra(i).obtenerAnio() == fecha.get(Calendar.YEAR)
-               && cuentaCorriente.devolverCompra(i).obtenerMes() == fecha.get(Calendar.MONTH)){
-                suma += cuentaCorriente.devolverCompra(i).obtenerProducto().getPrecio();
-            }
-        }
-        return suma;
+        int total = 0;
+        total = getCuentaCorriente().devolverComprasDeMes(fecha, clienteRegistrado());
+
+        return total;
+    }
+
+    public void registrarseEnSistema() {
+        this.registroDelSistema.registrarse();
+    }
+
+    public boolean clienteRegistrado(){
+        return registroDelSistema.estaRegistrado();
     }
 }
