@@ -79,13 +79,10 @@ public class LibreriaTest {
         Calendar fecha = Calendar.getInstance();
         fecha.set(2009,3,15);
 
-        Suscripcion suscripcionPeriodicoMensual = new Suscripcion(cliente,periodicoMensual, fecha);
+        cliente.suscribirse(periodicoMensual, fecha);
 
-        Assert.assertEquals(cliente,suscripcionPeriodicoMensual.getCliente());
-        Assert.assertEquals(periodicoMensual,suscripcionPeriodicoMensual.getProductoPeriodico());
-        Assert.assertEquals(15, suscripcionPeriodicoMensual.obtenerDia());
-        Assert.assertEquals(3, suscripcionPeriodicoMensual.obtenerMes());
-        Assert.assertEquals(2009, suscripcionPeriodicoMensual.obtenerAnio());
+        Assert.assertEquals(650, cliente.obtenerSuscripcion(0)
+                .getProductoPeriodico().getPrecio());
 
     }
 
@@ -118,6 +115,15 @@ public class LibreriaTest {
         comprador.comprarProducto(producto2, fecha);
 
         Assert.assertEquals(950, comprador.devolverComprasDelMes(fecha, comprador.clienteRegistrado()));
+    }
+
+    @Test
+    public void devolverSuscripcionesDeUnMes(){
+        /*Ciertos productos pueden COMPRARSE mientras que las a los periódicos
+        hay que SUSCRIBIRSE*/
+
+
+
     }
 
 

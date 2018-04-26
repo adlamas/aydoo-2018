@@ -4,19 +4,16 @@ import java.util.Calendar;
 
 public class Suscripcion {
 
-    Cliente cliente;
+
     Periodico productoPeriodico;
     Calendar fecha;
 
-    public Suscripcion(Cliente cliente, Periodico productoPeriodico, Calendar fecha) {
-        this.cliente = cliente;
+    public Suscripcion(Periodico productoPeriodico, Calendar fecha) {
+
         this.productoPeriodico = productoPeriodico;
         this.fecha = fecha;
     }
 
-    public Cliente getCliente() {
-        return cliente;
-    }
 
     public Periodico getProductoPeriodico() {
         return productoPeriodico;
@@ -32,4 +29,5 @@ public class Suscripcion {
     public int obtenerAnio(){
         return fecha.get(Calendar.YEAR);
     }
+
 }

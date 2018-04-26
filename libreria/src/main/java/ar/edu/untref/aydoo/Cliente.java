@@ -1,5 +1,6 @@
 package ar.edu.untref.aydoo;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class Cliente {
@@ -7,6 +8,7 @@ public class Cliente {
     CuentaCorriente cuentaCorriente = new CuentaCorriente();
     private Direccion direccion;
     private Registro registroDelSistema = new Registro();
+    private ArrayList<Suscripcion> suscripciones = new ArrayList<Suscripcion>();
 
     public void setDireccion(Direccion direccion) {
         this.direccion = direccion;
@@ -46,5 +48,14 @@ public class Cliente {
 
     public boolean clienteRegistrado(){
         return registroDelSistema.estaRegistrado();
+    }
+
+    public void suscribirse(Periodico periodicoMensual, Calendar fecha) {
+        Suscripcion suscripcionMensual = new Suscripcion(periodicoMensual, fecha);
+        this.suscripciones.add(suscripcionMensual);
+    }
+
+    public Suscripcion obtenerSuscripcion(int indice){
+        return this.suscripciones.get(indice);
     }
 }
