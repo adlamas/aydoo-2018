@@ -79,4 +79,11 @@ public class Cliente {
         return obtenerSumaSuscripcionesDeUnMes(fechaAVer)
                 + devolverComprasDelMes(fechaAVer , this.clienteRegistrado());
     }
+
+    public int devolverComprasDelAnio(int anio, boolean clienteRegistrado) {
+        int total = 0;
+        total = getCuentaCorriente().devolverComprasDeAnio(anio, clienteRegistrado());
+
+        return total;
+        }
 }

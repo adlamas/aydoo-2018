@@ -45,4 +45,15 @@ public class CuentaCorriente {
 
         return precioSinDescuento;
     }
+
+    public int devolverComprasDeAnio(int anio, boolean registro) {
+        int suma = 0;
+        for (int i = 0; i < this.compras.size(); i++) {
+            if (this.devolverCompra(i).obtenerAnio() == anio) {
+                int precioSinDescuento = this.devolverCompra(i).obtenerProducto().getPrecio();
+                suma += hacerDescuentoEnCompraPorRegistro(precioSinDescuento, registro);
+            }
+        }
+        return suma;
+    }
 }

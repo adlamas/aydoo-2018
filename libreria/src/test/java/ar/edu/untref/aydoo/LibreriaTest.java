@@ -259,6 +259,39 @@ public class LibreriaTest {
 
     }
 
+    @Test
+    public void cobrarProductosDeUnAnio(){
+        Cliente comprador = new Cliente();
+        Producto producto1 = new Producto(400);
+        Producto producto2 = new Producto(600);
+        Producto producto3 = new Producto(750);
+        Producto producto4 = new Producto(900);
+        Producto producto5 = new Producto(250);
+        Calendar fechaProducto1 = Calendar.getInstance();
+        Calendar fechaProducto2 = Calendar.getInstance();
+        Calendar fechaProducto3 = Calendar.getInstance();
+        Calendar fechaProducto4 = Calendar.getInstance();
+        Calendar fechaProducto5 = Calendar.getInstance();
+
+        fechaProducto1.set(2009,8,15);
+        fechaProducto2.set(2009, 1, 26);
+        fechaProducto3.set(2009, 9, 2);
+        fechaProducto4.set(2009, 10, 11);
+        fechaProducto5.set(2009, 4, 6);
+
+        comprador.comprarProducto(producto1, fechaProducto1);
+        comprador.comprarProducto(producto2, fechaProducto2);
+        comprador.comprarProducto(producto3, fechaProducto3);
+        comprador.comprarProducto(producto4, fechaProducto4);
+        comprador.comprarProducto(producto5, fechaProducto5);
+
+
+        int anio = 2009;
+
+        Assert.assertEquals(2900, comprador.devolverComprasDelAnio(anio, comprador.clienteRegistrado()));
+
+    }
+
 
 
 
