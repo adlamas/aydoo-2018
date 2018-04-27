@@ -30,4 +30,13 @@ public class Suscripcion {
         return fecha.get(Calendar.YEAR);
     }
 
+    public int devolverPrecioDeSuscripcionConDescuento(Suscripcion suscripcion){
+        if(suscripcion instanceof SuscripcionAnual){
+            int precio = suscripcion.getProductoPeriodico().getPrecio();
+            return precio - ((precio * 20) /100);
+        }
+
+        return suscripcion.getProductoPeriodico().getPrecio();
+    }
+
 }

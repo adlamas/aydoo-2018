@@ -58,12 +58,18 @@ public class Cliente {
         return this.suscripciones.get(indice);
     }
 
+    public void suscribirseAnualmente(Periodico periodicoMensual, Calendar fecha){
+        SuscripcionAnual suscripcionAnual = new SuscripcionAnual(periodicoMensual, fecha);
+        this.suscripciones.add(suscripcionAnual);
+    }
+
     public int obtenerSuscripcionesDeUnMes(Calendar fecha){
         int suma = 0;
         for(int i = 0; i < this.suscripciones.size(); i++){
             if(this.suscripciones.get(i).obtenerAnio() == fecha.get(Calendar.YEAR)
                     && this.suscripciones.get(i).obtenerMes() == fecha.get(Calendar.MONTH)){
-                suma += suscripciones.get(i).productoPeriodico.getPrecio();
+
+                suma += suscripciones.get(i).devolverPrecioDeSuscripcionConDescuento(suscripciones.get(i));
             }
         }
         return suma;

@@ -177,7 +177,56 @@ public class LibreriaTest {
         Assert.assertEquals(2850, comprador.obtenerSuscripcionesDeUnMes(fechaAVer));
     }
 
+    @Test
+    public void cobrarSuscripcionesDeMesConDescuento(){
 
+        Libreria libreria = new Libreria();
+        Cliente comprador = new Cliente();
+        Periodico revistaGente = new Periodico(1100, 1);
+        Periodico semanalEconomico = new Periodico(900, 4);
+
+        Calendar fechaRevistaGente = Calendar.getInstance();
+        Calendar fechaSemanalEconomico = Calendar.getInstance();
+
+        fechaRevistaGente.set(2009,3,15);
+        fechaSemanalEconomico.set(2009, 3, 26);
+
+        comprador.suscribirseAnualmente(revistaGente, fechaRevistaGente);
+        comprador.suscribirseAnualmente(semanalEconomico,fechaSemanalEconomico);
+
+        libreria.agregarCliente(comprador);
+
+        Calendar fechaAVer = Calendar.getInstance();
+        fechaAVer.set(2009,3, 30);
+
+        Assert.assertEquals(1600, comprador.obtenerSuscripcionesDeUnMes(fechaAVer));
+
+    }
+
+    @Test
+    public void cobrarSuscripcionesMensualesConYSinDescuento(){
+
+        Libreria libreria = new Libreria();
+        Cliente comprador = new Cliente();
+        Periodico revistaGente = new Periodico(1100, 1);
+        Periodico semanalEconomico = new Periodico(900, 4);
+
+        Calendar fechaRevistaGente = Calendar.getInstance();
+        Calendar fechaSemanalEconomico = Calendar.getInstance();
+
+        fechaRevistaGente.set(2009,3,15);
+        fechaSemanalEconomico.set(2009, 3, 26);
+
+        comprador.suscribirse(revistaGente, fechaRevistaGente);
+        comprador.suscribirseAnualmente(semanalEconomico,fechaSemanalEconomico);
+
+        libreria.agregarCliente(comprador);
+
+        Calendar fechaAVer = Calendar.getInstance();
+        fechaAVer.set(2009,3, 30);
+
+        Assert.assertEquals(1820, comprador.obtenerSuscripcionesDeUnMes(fechaAVer));
+    }
 
 
 }
