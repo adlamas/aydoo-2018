@@ -99,7 +99,7 @@ public class Cliente {
         return suma;
     }
 
-    public int cobrarTotalAnio(int anio) {
+    public int devolverTotalAnio(int anio) {
         return devolverComprasDelAnio(anio, this.clienteRegistrado())
                 + devolverMontoDeSuscripcionesDelAnio(anio);
     }

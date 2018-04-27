@@ -17,7 +17,7 @@ public class Libreria {
         clientes.add(cliente);
     }
 
-    public void cobrarAnio(Calendar fecha,Cliente cliente){
-
+    public int cobrarAnio(int anio,Cliente cliente){
+        return cliente.devolverTotalAnio(anio);
     }
 }

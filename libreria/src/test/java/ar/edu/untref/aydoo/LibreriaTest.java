@@ -362,12 +362,55 @@ public class LibreriaTest {
 
         int anio = 2009;
 
-        Assert.assertEquals(24600, comprador.cobrarTotalAnio(anio));
+        Assert.assertEquals(24600, comprador.devolverTotalAnio(anio));
 
     }
 
     @Test
     public void laLibreriaCobraTotalDelAnio(){
+        Libreria libreria = new Libreria();
+        Cliente comprador = new Cliente();
+        Periodico revistaGente = new Periodico(1000, 1);
+        Periodico semanalEconomico = new Periodico(1000, 4);
+        Producto producto1 = new Producto(400);
+        Producto producto2 = new Producto(600);
+        Producto producto3 = new Producto(750);
+        Producto producto4 = new Producto(1000);
+        Producto producto5 = new Producto(250);
+
+        Calendar fechaRevistaGente = Calendar.getInstance();
+        Calendar fechaSemanalEconomico = Calendar.getInstance();
+
+        Calendar fechaProducto1 = Calendar.getInstance();
+        Calendar fechaProducto2 = Calendar.getInstance();
+        Calendar fechaProducto3 = Calendar.getInstance();
+        Calendar fechaProducto4 = Calendar.getInstance();
+        Calendar fechaProducto5 = Calendar.getInstance();
+
+        fechaProducto1.set(2009,8,15);
+        fechaProducto2.set(2009, 1, 26);
+        fechaProducto3.set(2009, 9, 2);
+        fechaProducto4.set(2009, 10, 11);
+        fechaProducto5.set(2009, 4, 6);
+
+        comprador.comprarProducto(producto1, fechaProducto1);
+        comprador.comprarProducto(producto2, fechaProducto2);
+        comprador.comprarProducto(producto3, fechaProducto3);
+        comprador.comprarProducto(producto4, fechaProducto4);
+        comprador.comprarProducto(producto5, fechaProducto5);
+
+        fechaRevistaGente.set(2009,3,15);
+        fechaSemanalEconomico.set(2009, 3, 26);
+
+        comprador.suscribirse(revistaGente, fechaRevistaGente);
+        comprador.suscribirseAnualmente(semanalEconomico,fechaSemanalEconomico);
+
+        libreria.agregarCliente(comprador);
+
+        int anio = 2009;
+
+        Assert.assertEquals(24600, libreria.cobrarAnio(anio, comprador));
+
 
     }
 
