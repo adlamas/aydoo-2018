@@ -229,7 +229,7 @@ public class LibreriaTest {
     }
 
     @Test
-    public void cobrarMesTotal(){
+    public void LaLibreriaCobraTotalDeMes(){
         Libreria libreria = new Libreria();
         Cliente comprador = new Cliente();
         Periodico revistaGente = new Periodico(1100, 1);
@@ -255,9 +255,11 @@ public class LibreriaTest {
         Calendar fechaAVer = Calendar.getInstance();
         fechaAVer.set(2009,3, 30);
 
-        Assert.assertEquals(2820, comprador.obtenerTotalDeMes(fechaAVer));
+        Assert.assertEquals(2820, libreria.cobrarMes(fechaAVer, comprador));
 
     }
+
+
 
 
 }

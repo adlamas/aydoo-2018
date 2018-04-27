@@ -9,12 +9,12 @@ public class Libreria {
 
     private LinkedList<Cliente> clientes = new LinkedList<Cliente>();
 
-    public void cobrarMes(Calendar fecha, Cliente cliente){
-
+    public int cobrarMes(Calendar fecha, Cliente cliente){
+        return cliente.obtenerTotalDeMes(fecha);
     }
 
     public void agregarCliente(Cliente cliente){
-
+        clientes.add(cliente);
     }
 
     public void cobrarAnio(Calendar fecha,Cliente cliente){
