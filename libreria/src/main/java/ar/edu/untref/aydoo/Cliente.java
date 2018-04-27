@@ -86,4 +86,16 @@ public class Cliente {
 
         return total;
         }
+
+    public int devolverMontoDeSuscripcionesDelAnio(int anio) {
+        int suma = 0;
+        for(int i = 0; i < this.suscripciones.size(); i++){
+            if(this.suscripciones.get(i).obtenerAnio() == anio){
+
+                suma += (suscripciones.get(i)
+                        .devolverPrecioDeSuscripcionConDescuento(suscripciones.get(i)) ) * 12;
+            }
+        }
+        return suma;
+    }
 }

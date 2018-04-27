@@ -260,8 +260,9 @@ public class LibreriaTest {
     }
 
     @Test
-    public void cobrarProductosDeUnAnio(){
+    public void CobrarProductosDeUnAnio(){
         Cliente comprador = new Cliente();
+
         Producto producto1 = new Producto(400);
         Producto producto2 = new Producto(600);
         Producto producto3 = new Producto(750);
@@ -285,12 +286,48 @@ public class LibreriaTest {
         comprador.comprarProducto(producto4, fechaProducto4);
         comprador.comprarProducto(producto5, fechaProducto5);
 
-
         int anio = 2009;
 
         Assert.assertEquals(2900, comprador.devolverComprasDelAnio(anio, comprador.clienteRegistrado()));
 
     }
+
+    @Test
+    public void CobrarSuscripcionesPorAnio(){
+
+        Libreria libreria = new Libreria();
+        Cliente comprador = new Cliente();
+        Periodico revistaGente = new Periodico(1100, 1);
+        Periodico semanalEconomico = new Periodico(900, 4);
+        Periodico diarioOLE = new Periodico(500, 2);
+
+        Calendar fechaRevistaGente = Calendar.getInstance();
+        Calendar fechaSemanalEconomico = Calendar.getInstance();
+        Calendar fechaDiarioOLE = Calendar.getInstance();
+
+        fechaRevistaGente.set(2009,3,15);
+        fechaSemanalEconomico.set(2009, 7, 26);
+        fechaDiarioOLE.set(2009, 1, 19);
+
+        comprador.suscribirse(revistaGente, fechaRevistaGente);
+        comprador.suscribirseAnualmente(semanalEconomico,fechaSemanalEconomico);
+        comprador.suscribirseAnualmente(diarioOLE,fechaDiarioOLE);
+
+        libreria.agregarCliente(comprador);
+
+        int anio = 2009;
+
+        Assert.assertEquals(26640, comprador.devolverMontoDeSuscripcionesDelAnio(anio));
+
+    }
+
+    //Falta hacer:
+    /*
+    *
+    * Libreria.CobrarAnio()
+    * Retocar diagrama de clases y de secuencia
+    *
+    * */
 
 
 
