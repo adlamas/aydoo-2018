@@ -63,7 +63,7 @@ public class Cliente {
         this.suscripciones.add(suscripcionAnual);
     }
 
-    public int obtenerSuscripcionesDeUnMes(Calendar fecha){
+    public int obtenerSumaSuscripcionesDeUnMes(Calendar fecha){
         int suma = 0;
         for(int i = 0; i < this.suscripciones.size(); i++){
             if(this.suscripciones.get(i).obtenerAnio() == fecha.get(Calendar.YEAR)
@@ -73,5 +73,10 @@ public class Cliente {
             }
         }
         return suma;
+    }
+
+    public int obtenerTotalDeMes(Calendar fechaAVer) {
+        return obtenerSumaSuscripcionesDeUnMes(fechaAVer)
+                + devolverComprasDelMes(fechaAVer , this.clienteRegistrado());
     }
 }

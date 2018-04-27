@@ -174,7 +174,7 @@ public class LibreriaTest {
         Calendar fechaAVer = Calendar.getInstance();
         fechaAVer.set(2009,3, 30);
 
-        Assert.assertEquals(2850, comprador.obtenerSuscripcionesDeUnMes(fechaAVer));
+        Assert.assertEquals(2850, comprador.obtenerSumaSuscripcionesDeUnMes(fechaAVer));
     }
 
     @Test
@@ -199,7 +199,7 @@ public class LibreriaTest {
         Calendar fechaAVer = Calendar.getInstance();
         fechaAVer.set(2009,3, 30);
 
-        Assert.assertEquals(1600, comprador.obtenerSuscripcionesDeUnMes(fechaAVer));
+        Assert.assertEquals(1600, comprador.obtenerSumaSuscripcionesDeUnMes(fechaAVer));
 
     }
 
@@ -225,7 +225,38 @@ public class LibreriaTest {
         Calendar fechaAVer = Calendar.getInstance();
         fechaAVer.set(2009,3, 30);
 
-        Assert.assertEquals(1820, comprador.obtenerSuscripcionesDeUnMes(fechaAVer));
+        Assert.assertEquals(1820, comprador.obtenerSumaSuscripcionesDeUnMes(fechaAVer));
+    }
+
+    @Test
+    public void cobrarMesTotal(){
+        Libreria libreria = new Libreria();
+        Cliente comprador = new Cliente();
+        Periodico revistaGente = new Periodico(1100, 1);
+        Periodico semanalEconomico = new Periodico(900, 4);
+        Producto producto1 = new Producto(400);
+        Producto producto2 = new Producto(600);
+
+        Calendar fechaRevistaGente = Calendar.getInstance();
+        Calendar fechaSemanalEconomico = Calendar.getInstance();
+        Calendar fechaProductos = Calendar.getInstance();
+
+        fechaRevistaGente.set(2009,3,15);
+        fechaSemanalEconomico.set(2009, 3, 26);
+        fechaProductos.set(2009, 3, 2);
+
+        comprador.suscribirse(revistaGente, fechaRevistaGente);
+        comprador.suscribirseAnualmente(semanalEconomico,fechaSemanalEconomico);
+        comprador.comprarProducto(producto1,fechaProductos);
+        comprador.comprarProducto(producto2,fechaProductos);
+
+        libreria.agregarCliente(comprador);
+
+        Calendar fechaAVer = Calendar.getInstance();
+        fechaAVer.set(2009,3, 30);
+
+        Assert.assertEquals(2820, comprador.obtenerTotalDeMes(fechaAVer));
+
     }
 
 
