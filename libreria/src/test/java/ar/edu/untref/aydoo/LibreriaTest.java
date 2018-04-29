@@ -414,6 +414,54 @@ public class LibreriaTest {
 
     }
 
+    @Test
+    public void cobrarMesAClientesRegistrado(){
+
+        Libreria libreria = new Libreria();
+        Cliente comprador = new Cliente();
+        Cliente comprador2 = new Cliente();
+        Cliente comprador3 = new Cliente();
+
+        Producto producto1 = new Producto(1000);
+        Producto producto2 = new Producto(1000);
+        Producto producto3 = new Producto(1000);
+        Producto producto4 = new Producto(1000);
+        Producto producto5 = new Producto(250);
+        Producto producto6 = new Producto(500);
+
+        Calendar fechaProducto1 = Calendar.getInstance();
+        Calendar fechaProducto2 = Calendar.getInstance();
+        Calendar fechaProducto3 = Calendar.getInstance();
+        Calendar fechaProducto4 = Calendar.getInstance();
+        Calendar fechaProducto5 = Calendar.getInstance();
+        Calendar fechaProducto6 = Calendar.getInstance();
+
+        fechaProducto1.set(2009,3,15);
+        fechaProducto2.set(2009, 3, 26);
+        fechaProducto3.set(2009, 3, 2);
+        fechaProducto4.set(2009, 3, 11);
+        fechaProducto5.set(2009, 3, 6);
+        fechaProducto6.set(2009, 3, 16);
+
+        comprador.comprarProducto(producto1, fechaProducto1);
+        comprador.comprarProducto(producto2, fechaProducto2);
+        comprador2.comprarProducto(producto3, fechaProducto3);
+        comprador2.comprarProducto(producto4, fechaProducto4);
+        comprador3.comprarProducto(producto5, fechaProducto5);
+        comprador3.comprarProducto(producto6, fechaProducto6);
+
+        libreria.agregarCliente(comprador);
+        libreria.agregarCliente(comprador2);
+        libreria.agregarCliente(comprador3);
+        comprador.registrarseEnSistema();
+        comprador2.registrarseEnSistema();
+
+        Calendar fechaAVer = Calendar.getInstance();
+        fechaAVer.set(2009,3, 30);
+
+        Assert.assertEquals(3800, libreria.cobrarMesAClientesRegistrados(fechaAVer));
+    }
+
 
 
 }

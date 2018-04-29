@@ -8,14 +8,6 @@ public class CuentaCorriente {
 
     ArrayList<Compra> compras = new ArrayList<Compra>();
 
-    public CuentaCorriente(){
-
-    }
-
-    public int getCantidadDeCompras(){
-        return compras.size();
-    }
-
     public void agregarCompra(Compra compra){
         compras.add(compra);
     }

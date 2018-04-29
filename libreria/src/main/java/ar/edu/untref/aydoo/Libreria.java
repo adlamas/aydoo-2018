@@ -13,11 +13,25 @@ public class Libreria {
         return cliente.obtenerTotalDeMes(fecha);
     }
 
+
     public void agregarCliente(Cliente cliente){
         clientes.add(cliente);
     }
 
     public int cobrarAnio(int anio,Cliente cliente){
         return cliente.devolverTotalAnio(anio);
+    }
+
+    public int cobrarMesAClientesRegistrados(Calendar fechaAVer) {
+
+        int suma = 0;
+
+        for(int i = 0; i < clientes.size(); i++){
+            if(clientes.get(i).clienteRegistrado() == true){
+                suma += clientes.get(i).obtenerTotalDeMes(fechaAVer);
+            }
+        }
+
+        return suma;
     }
 }
