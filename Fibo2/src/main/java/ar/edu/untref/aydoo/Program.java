@@ -20,7 +20,7 @@ public class Program {
                 imprimirHorizontalAscendente(args);
                 return;
             }
-            System.out.println("Opciones no validas");
+            System.out.println("Opciones no validas.");
 
         }
 
@@ -43,7 +43,7 @@ public class Program {
                     System.out.print(numero2 + " ");
                 }
             }catch(Exception e){
-                System.out.println("Opciones no validas");
+                System.out.println("Opciones no validas.");
             }
 
         }
