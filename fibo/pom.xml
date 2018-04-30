@@ -2,7 +2,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>ar.edu.untref.aydoo</groupId>
-    <artifactId>alanlamas-fibo</artifactId>
+    <artifactId>alanlamas-fibo2</artifactId>
     <version>1.0.0</version>
     <dependencies>
         <dependency>
@@ -102,7 +102,7 @@
                   <archive>
                     <manifest>
                       <addClasspath>true</addClasspath>
-                      <mainClass>ar.edu.untref.aydoo.fibo</mainClass>
+                      <mainClass>ar.edu.untref.aydoo.Program</mainClass>
                     </manifest>
                   </archive>
                 </configuration>
