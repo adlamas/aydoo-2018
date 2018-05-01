@@ -2,7 +2,7 @@ package ar.edu.untref.aydoo;
 
 public class arregloDeNumeros {
 
-    public int[] arregloDeNumerosDeFibonacci(int limite){
+    public int[] obtenerArregloDeNumerosDeFibonacci(int limite){
         int numero1 = 0;
         int numero2 = 1;
         int temporal;
