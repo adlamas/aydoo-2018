@@ -1,13 +1,15 @@
 package ar.edu.untref.aydoo;
 
 public class opcionM {
-    public static int sumarNumeros(int[] arregloEsperado) {
-
+    public static int sumarNumeros(int[] arregloEsperado, String M) {
         int suma = 0;
-        for(int i = 0; i < arregloEsperado.length; i++){
-            suma += arregloEsperado[i];
-        }
+        if(M.equals("-m=s")){
+            for(int i = 0; i < arregloEsperado.length; i++){
+                suma += arregloEsperado[i];
+            }
 
+            return suma;
+        }
         return suma;
     }
 }

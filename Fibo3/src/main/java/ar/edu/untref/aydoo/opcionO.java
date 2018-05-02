@@ -6,43 +6,129 @@ import java.io.PrintWriter;
 
 public class opcionO {
 
-    public void imprimirEnArchivo(String args[]){
-        FileWriter fichero = null;
+    public void imprimirSumaEnFichero(String fichero, int suma, String opcionO, int[] arreglo) {
+
+        FileWriter ficheroAEscribir = null;
         PrintWriter pw = null;
+        String nombreFichero = fichero.substring(3);
         try {
+            ficheroAEscribir = new FileWriter(nombreFichero);
+            pw = new PrintWriter(ficheroAEscribir);
 
-            String nombreFichero = args[1].substring(3);
-            //System.out.println(nombreFichero);
-            fichero = new FileWriter(nombreFichero);
-            pw = new PrintWriter(fichero);
+            if(opcionO.equals("-o=vi") || opcionO.equals("-o=vd")){
+                pw.println("fibo<"+arreglo.length+">s: ");
+                pw.println(suma);
+            }
+            else if(opcionO.equals("-o=hi") || opcionO.equals("-o=hd")){
+                pw.println("fibo<"+arreglo.length+">s: " + suma);
+            }
+            else{
+                System.out.println("Opciones no validas.");
+            }
 
-            int numero1 = 0;
-            int numero2 = 1;
-            int temporal;
-            int limite = Integer.parseInt(args[args.length - 1]);
+            ficheroAEscribir.close();
+        }
+        catch (IOException e) {
+            System.out.println("Opciones no validas.");
+        }
+    }
 
-            //System.out.print("fibo<" + args[0] + ">: " + numero1 + " ");
-            System.out.print(numero2 + " ");
+    public void imprimirArregloEnFichero(String fichero, String opcionO, int[] arreglo){
+        FileWriter ficheroAEscribir = null;
+        PrintWriter pw = null;
+        String nombreFichero = fichero.substring(3);
+        try {
+            ficheroAEscribir = new FileWriter(nombreFichero);
+            pw = new PrintWriter(ficheroAEscribir);
+            if(opcionO.equals("-o=vd")){
+                pw.println("fibo<"+arreglo.length+">: ");
+                for(int i = 0; i < arreglo.length; i++){
+                    pw.println(arreglo[i]);
+                }
 
+            }
+            else if(opcionO.equals("-o=vi")){
+                pw.println("fibo<"+arreglo.length+">: ");
+                for(int i = arreglo.length-1; i >= 0; i--){
+                    pw.println(arreglo[i]);
+                }
+            }
+            else if(opcionO.equals("-o=hd")){
+                pw.print("fibo<" + arreglo.length + ">: ");
+                for(int i = 0; i < arreglo.length; i++){
+                    pw.print(arreglo[i] + " ");
+                }
 
-            for (int i = 1; i <= limite - 2; i++) {
-                temporal = numero1;
-                numero1 = numero2;
-                numero2 = temporal + numero1;
-                System.out.println(numero2);
-                pw.print(numero2 + " ");
+            }
+            else if(opcionO.equals("-o=hi")){
+                pw.print("fibo<" + arreglo.length + ">: ");
+                for(int i = arreglo.length-1; i >= 0; i--){
+                    pw.print(arreglo[i] + " ");
+                }
+            }
+            else{
+                System.out.println("Opciones no validas.");
             }
 
         }
-        catch (IOException e) {
-            e.printStackTrace();
+        catch (IOException e){
+            System.out.println("Opciones no validas.");
         }
         finally {
             try {
-                fichero.close();
-            } catch (IOException e) {
-                e.printStackTrace();
+                ficheroAEscribir.close();
             }
+            catch (Exception e2){
+                System.out.println("Opciones no validas.");
+            }
+
+        }
+
+    }
+
+    public void imprimirSumaEnConsola(int suma, String opcionO, int [] arreglo){
+        if(opcionO.equals("-o=vi") || opcionO.equals("-o=vd")){
+            System.out.println("fibo<"+arreglo.length+">s: ");
+            System.out.println(suma);
+        }
+        else if(opcionO.equals("-o=hi") || opcionO.equals("-o=hd")){
+            System.out.println("fibo<"+arreglo.length+">s: " + suma);
+        }
+        else{
+            System.out.println("Opciones no validas.");
         }
     }
+
+    public void imprimirArregloEnConsola(String opcionO, int [] arreglo){
+        if(opcionO.equals("-o=vd")){
+            System.out.println("fibo<"+arreglo.length+">: ");
+            for(int i = 0; i < arreglo.length; i++){
+                System.out.println(arreglo[i]);
+            }
+
+        }
+        else if(opcionO.equals("-o=vi")){
+            System.out.println("fibo<"+arreglo.length+">: ");
+            for(int i = arreglo.length-1; i >= 0; i--){
+                System.out.println(arreglo[i]);
+            }
+        }
+        else if(opcionO.equals("-o=hd")){
+            System.out.print("fibo<" + arreglo.length + ">: ");
+            for(int i = 0; i < arreglo.length; i++){
+                System.out.print(arreglo[i] + " ");
+            }
+
+        }
+        else if(opcionO.equals("-o=hi")){
+            System.out.print("fibo<" + arreglo.length + ">: ");
+            for(int i = arreglo.length-1; i >= 0; i--){
+                System.out.print(arreglo[i] + " ");
+            }
+        }
+        else{
+            System.out.println("Opciones no validas.");
+        }
+    }
+
 }
