@@ -14,7 +14,7 @@ Considerando el escenario de una votación nacional se pide:
 public class testVotacion {
 
     @Test
-    public void votarAUnCandidato(){
+    public void votarAUnCandidatoDeUnaProvinciaEnVotaciones(){
 
         Partido FPV = new Partido("Frente para la victoria");
         Candidato LuisDlia = new Candidato("Luis",  FPV);
@@ -24,6 +24,21 @@ public class testVotacion {
         votacionesBuenosAires.agregarVoto(votoLuis);
 
         Assert.assertEquals(votoLuis, votacionesBuenosAires.obtenerVoto(0));
+    }
 
+    @Test
+    public void votarDosCandidatosDeUnaProvinciaEnVotaciones(){
+        Partido FPV = new Partido("Frente para la victoria");
+        Candidato LuisDlia = new Candidato("Luis Dlia",  FPV);
+        Candidato NestorKirchner = new Candidato("Nestor Kirchner",  FPV);
+        Votacion votacionesBuenosAires = new Votacion();
+        Provincia BuenosAires = new Provincia("Bs As");
+        Voto votoLuis = new Voto(LuisDlia, BuenosAires);
+        Voto votoNestor = new Voto(LuisDlia, BuenosAires);
+        votacionesBuenosAires.agregarVoto(votoLuis);
+        votacionesBuenosAires.agregarVoto(votoNestor);
+
+        Assert.assertEquals(votoLuis, votacionesBuenosAires.obtenerVoto(0));
+        Assert.assertEquals(votoNestor, votacionesBuenosAires.obtenerVoto(1));
     }
 }
