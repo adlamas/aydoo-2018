@@ -18,4 +18,15 @@ public class Votacion {
     public Voto obtenerVoto(int i) {
         return this.votos.get(i);
     }
+
+    public int obtenerCantidadDeVotosDeCandidatoPorProvincia(Provincia provincia, Candidato candidato) {
+        int cantidadDeCandidatosPorProvincia = 0;
+        for(int i = 0; i < votos.size(); i++){
+            if(votos.get(i).getCandidato() == candidato && votos.get(i).getProvincia() == provincia){
+                cantidadDeCandidatosPorProvincia++;
+            }
+        }
+
+        return  cantidadDeCandidatosPorProvincia;
+    }
 }

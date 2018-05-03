@@ -11,4 +11,11 @@ public class Voto {
         this.provincia = provincia;
     }
 
+    public Candidato getCandidato() {
+        return candidato;
+    }
+
+    public Provincia getProvincia() {
+        return provincia;
+    }
 }
