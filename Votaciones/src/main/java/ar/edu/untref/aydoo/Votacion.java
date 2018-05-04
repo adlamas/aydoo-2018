@@ -79,4 +79,14 @@ public class Votacion {
         }
         return sumaDeCandidatos;
     }
+
+    public int obtenerCantidadDeVotosParaUnPartido(Partido partido) {
+        int sumaDeVotos = 0;
+        for (int i = 0; i < candidatos.size(); i++){
+            if(candidatos.get(i).getPartido() == partido){
+                sumaDeVotos = sumaDeVotos + candidatos.get(i).obtenerCantidadDeVotos();
+            }
+        }
+        return sumaDeVotos;
+    }
 }
