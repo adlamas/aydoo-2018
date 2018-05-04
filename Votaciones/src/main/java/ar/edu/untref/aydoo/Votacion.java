@@ -52,4 +52,21 @@ public class Votacion {
         return candidatoConMasVotos;
 
     }
+
+    public LinkedList<Candidato> obtenerCandidatoConMasVotosDeTodasLasProvincias(){
+        LinkedList<Candidato> candidatosConMasVotosPorProvincia = new LinkedList<Candidato>();
+        LinkedList<Provincia> provinciasParticipantes = new LinkedList<Provincia>();
+        for(int i = 0; i < this.candidatos.size(); i++){
+            if(!provinciasParticipantes.contains(candidatos.get(i).getProvinciaARepresentar())){
+                provinciasParticipantes.add(candidatos.get(i).getProvinciaARepresentar());
+            }
+        }
+
+        for (int i = 0; i < provinciasParticipantes.size(); i++){
+            candidatosConMasVotosPorProvincia.
+                    add(obtenerCandidatoConMasVotosDeUnaProvincia(provinciasParticipantes.get(i)));
+        }
+
+        return candidatosConMasVotosPorProvincia;
+    }
 }
