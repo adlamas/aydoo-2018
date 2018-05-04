@@ -89,4 +89,74 @@ public class Votacion {
         }
         return sumaDeVotos;
     }
+
+    public Partido obtenerPartidoConMasVotos() {
+
+        class parPartidoVoto{
+
+            Partido partido;
+            int votos = 0;
+
+            public parPartidoVoto(Partido partido){
+                this.partido = partido;
+            }
+
+            public Partido getPartido() {
+                return partido;
+            }
+
+            public int getVotos() {
+                return votos;
+            }
+
+            public void sumarVotos(int votosASumar){
+                votos = votos + votosASumar;
+            }
+        }
+        //Si la lista de partidos no lo contiene, sumar a la lista
+        //Si la lista de partidos lo contiene, sumar los votos del candidato
+
+        LinkedList<Partido> partidosParticipantes = new LinkedList<Partido>();
+        LinkedList<parPartidoVoto> parPartidosVotos = new LinkedList<parPartidoVoto>();
+
+
+        for (int i = 0; i < candidatos.size(); i++) {
+            Partido partidoDeCandidato = candidatos.get(i).getPartido();
+
+            if (!partidosParticipantes.contains(partidoDeCandidato)) {
+                partidosParticipantes.add(partidoDeCandidato);
+            }
+            //Pongo todos los partidos existentes
+            //Seteo en los pares, los partidos Existentes con votos en 0
+            //Por cada candidato, si su partido coincide con el atributo partido del par, sumo sus votos al
+            //atributo votos del mismo objeto par
+        }
+
+        for(int i = 0; i < partidosParticipantes.size(); i++){
+            parPartidoVoto parPV = new parPartidoVoto(partidosParticipantes.get(i));
+            parPartidosVotos.add(parPV);
+        }
+
+
+        for (int i = 0; i < candidatos.size(); i++) {
+            Partido partidoCandidatoActual = candidatos.get(i).getPartido();
+            for(int j = 0; j < parPartidosVotos.size(); j++){
+                if(parPartidosVotos.get(j).getPartido() == partidoCandidatoActual){
+                    parPartidosVotos.get(j).sumarVotos(candidatos.get(i).obtenerCantidadDeVotos());
+                }
+            }
+        }
+
+        int indice = 0;
+        int votosDePartidoConMasVotos = 0;
+
+        for(int i = 0; i < parPartidosVotos.size(); i++){
+            if(parPartidosVotos.get(i).getVotos() > votosDePartidoConMasVotos){
+                votosDePartidoConMasVotos = parPartidosVotos.get(i).getVotos();
+                indice = i;
+            }
+        }
+
+        return parPartidosVotos.get(indice).getPartido();
+    }
 }
