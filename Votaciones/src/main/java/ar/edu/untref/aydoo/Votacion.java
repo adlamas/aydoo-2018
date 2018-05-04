@@ -4,29 +4,22 @@ import java.util.LinkedList;
 
 public class Votacion {
 
-    private LinkedList<Voto> votos = new LinkedList<Voto>();
+    private LinkedList<Candidato> candidatos = new LinkedList<Candidato>();
 
-    public void agregarVoto(Voto voto){
-        this.votos.add(voto);
+    public void agregarCandidato(Candidato candidato){
+        candidatos.add(candidato);
     }
 
-    public int cantidadDeVotos(){
-        return this.votos.size();
+    public Candidato obtenerCandidato(int index){
+        return candidatos.get(index);
     }
 
-
-    public Voto obtenerVoto(int i) {
-        return this.votos.get(i);
-    }
-
-    public int obtenerCantidadDeVotosDeCandidatoPorProvincia(Provincia provincia, Candidato candidato) {
-        int cantidadDeCandidatosPorProvincia = 0;
-        for(int i = 0; i < votos.size(); i++){
-            if(votos.get(i).getCandidato() == candidato && votos.get(i).getProvincia() == provincia){
-                cantidadDeCandidatosPorProvincia++;
+    public void votar(Candidato candidato){
+        for(int i = 0; i < candidatos.size(); i++){
+            if(candidatos.get(i) == candidato){
+                candidatos.get(i).sumarVoto();
             }
         }
-
-        return  cantidadDeCandidatosPorProvincia;
     }
+
 }
