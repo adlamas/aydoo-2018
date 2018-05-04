@@ -31,7 +31,7 @@ public class testVotacion {
     }
 
     @Test
-    public void calcularCantidadDeCandidatosParaUnaProvincia(){
+        public void calcularCantidadDeCandidatosParaUnaProvincia(){
         Provincia BsAs = new Provincia("Bs As");
         Partido FPV = new Partido("Frente para la victoria");
         Candidato LuisDlia = new Candidato("Luis",  FPV, BsAs);
@@ -43,6 +43,36 @@ public class testVotacion {
         votacionesBsAs.agregarCandidato(Kicillof);
 
         Assert.assertEquals(3, votacionesBsAs.obtenerCantidadDeCandidatosParaUnaProvincia(BsAs));
+    }
+
+    @Test
+    public void calcularCandidatoConMasVotosEnUnaProvincia(){
+        Provincia BsAs = new Provincia("Bs As");
+        Partido FPV = new Partido("Frente para la victoria");
+        Candidato LuisDlia = new Candidato("Luis",  FPV, BsAs);
+        Candidato Nestor = new Candidato("Nestor",  FPV, BsAs);
+        Candidato Kicillof = new Candidato("Axel",  FPV, BsAs);
+        Votacion votacionesBsAs = new Votacion();
+        votacionesBsAs.agregarCandidato(LuisDlia);
+        votacionesBsAs.agregarCandidato(Nestor);
+        votacionesBsAs.agregarCandidato(Kicillof);
+
+        votacionesBsAs.votar(LuisDlia);
+        votacionesBsAs.votar(LuisDlia);
+        votacionesBsAs.votar(Nestor);
+        votacionesBsAs.votar(Nestor);
+        votacionesBsAs.votar(Nestor);
+        votacionesBsAs.votar(Nestor);
+        votacionesBsAs.votar(Kicillof);
+        votacionesBsAs.votar(Kicillof);
+        votacionesBsAs.votar(Kicillof);
+
+        Candidato candidatoConMasVotos = votacionesBsAs.obtenerCandidatoConMasVotosDeUnaProvincia(BsAs);
+
+        Assert.assertEquals(Nestor, candidatoConMasVotos);
+        Assert.assertEquals("Nestor", candidatoConMasVotos.getNombreCompleto());
+        Assert.assertEquals(4, candidatoConMasVotos.obtenerCantidadDeVotos());
+
     }
 
 }
