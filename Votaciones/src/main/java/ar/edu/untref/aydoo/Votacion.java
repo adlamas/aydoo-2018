@@ -69,4 +69,14 @@ public class Votacion {
 
         return candidatosConMasVotosPorProvincia;
     }
+
+    public int obtenerCantidadDeCandidatosParaUnPartido(Partido partido) {
+        int sumaDeCandidatos = 0;
+        for (int i = 0; i < candidatos.size(); i++){
+            if(candidatos.get(i).getPartido() == partido){
+                sumaDeCandidatos++;
+            }
+        }
+        return sumaDeCandidatos;
+    }
 }
