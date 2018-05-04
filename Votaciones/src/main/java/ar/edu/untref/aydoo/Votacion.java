@@ -22,4 +22,14 @@ public class Votacion {
         }
     }
 
+    public int obtenerCantidadDeCandidatosParaUnaProvincia(Provincia provincia) {
+        int sumaDeCandidatos = 0;
+        for (int i = 0; i < candidatos.size(); i++){
+            if(candidatos.get(i).getProvinciaARepresentar() == provincia){
+                sumaDeCandidatos++;
+            }
+        }
+        return sumaDeCandidatos;
+
+    }
 }

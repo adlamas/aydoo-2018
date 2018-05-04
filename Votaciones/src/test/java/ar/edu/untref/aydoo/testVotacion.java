@@ -15,7 +15,7 @@ Considerando el escenario de una votación nacional se pide:
 public class testVotacion {
 
     @Test
-    public void votarAUnCandidatoEnVotaciones(){
+    public void votar3VecesAUnCandidatoEnVotacionesYObtenerTalNumero(){
 
         Provincia BuenosAires = new Provincia("Bs As");
         Partido FPV = new Partido("Frente para la victoria");
@@ -28,6 +28,21 @@ public class testVotacion {
         votacionesBuenosAires.votar(LuisDlia);
 
         Assert.assertEquals(3, LuisDlia.obtenerCantidadDeVotos());
+    }
+
+    @Test
+    public void calcularCantidadDeCandidatosParaUnaProvincia(){
+        Provincia BsAs = new Provincia("Bs As");
+        Partido FPV = new Partido("Frente para la victoria");
+        Candidato LuisDlia = new Candidato("Luis",  FPV, BsAs);
+        Candidato Nestor = new Candidato("Nestor",  FPV, BsAs);
+        Candidato Kicillof = new Candidato("Axel",  FPV, BsAs);
+        Votacion votacionesBsAs = new Votacion();
+        votacionesBsAs.agregarCandidato(LuisDlia);
+        votacionesBsAs.agregarCandidato(Nestor);
+        votacionesBsAs.agregarCandidato(Kicillof);
+
+        Assert.assertEquals(3, votacionesBsAs.obtenerCantidadDeCandidatosParaUnaProvincia(BsAs));
     }
 
 }
