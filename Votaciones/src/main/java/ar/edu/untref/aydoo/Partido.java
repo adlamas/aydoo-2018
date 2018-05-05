@@ -4,7 +4,11 @@ public class Partido {
 
     private String nombrePartido;
 
-    public  Partido(String nombrePartido){
+    public Partido(String nombrePartido){
+        this.nombrePartido = nombrePartido;
+    }
+
+    public void setNombrePartido(String nombrePartido){
         this.nombrePartido = nombrePartido;
     }
 

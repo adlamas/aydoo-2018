@@ -10,10 +10,6 @@ public class Votacion {
         candidatos.add(candidato);
     }
 
-    public Candidato obtenerCandidato(int index){
-        return candidatos.get(index);
-    }
-
     public void votar(Candidato candidato){
         for(int i = 0; i < candidatos.size(); i++){
             if(candidatos.get(i) == candidato){
@@ -113,8 +109,6 @@ public class Votacion {
                 votos = votos + votosASumar;
             }
         }
-        //Si la lista de partidos no lo contiene, sumar a la lista
-        //Si la lista de partidos lo contiene, sumar los votos del candidato
 
         LinkedList<Partido> partidosParticipantes = new LinkedList<Partido>();
         LinkedList<parPartidoVoto> parPartidosVotos = new LinkedList<parPartidoVoto>();
@@ -126,10 +120,6 @@ public class Votacion {
             if (!partidosParticipantes.contains(partidoDeCandidato)) {
                 partidosParticipantes.add(partidoDeCandidato);
             }
-            //Pongo todos los partidos existentes
-            //Seteo en los pares, los partidos Existentes con votos en 0
-            //Por cada candidato, si su partido coincide con el atributo partido del par, sumo sus votos al
-            //atributo votos del mismo objeto par
         }
 
         for(int i = 0; i < partidosParticipantes.size(); i++){

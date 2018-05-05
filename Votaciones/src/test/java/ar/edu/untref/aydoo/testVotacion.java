@@ -1,19 +1,9 @@
 package ar.edu.untref.aydoo;
-import gherkin.lexer.Ca;
-import gherkin.lexer.Lu;
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.LinkedList;
 
-/*
-En las votaciones Primaria Abiertas Simultáneas Obligatorias (PASO) compiten candidatos de varios partidos.
-Cada candidato representa a un único partido pero cada partido puede tener varios candidatos.
-
-Considerando el escenario de una votación nacional se pide:
-* Calcular el candidato que más votos logró en cada provincia
-* Calcular el partido que más votos logró a nivel nacional (sumatoria de provincias de los votos del partido)
-*/
 
 public class testVotacion {
 
@@ -299,9 +289,9 @@ public class testVotacion {
         votaciones.votar(candidato13);
 
         Partido partidoGanador = votaciones.obtenerPartidoConMasVotos();
-        System.out.println(partidoGanador.getNombrePartido());
 
-        //Assert.assertEquals(partido1, partidoGanador);
+
+        Assert.assertEquals(partido2, partidoGanador);
 
 
     }
