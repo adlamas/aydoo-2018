@@ -11,7 +11,7 @@ public class testFibo3 {
     @Test
     public void imprimirAlgoEnArchivoVD(){
 
-        String[] args = {"-o=vd","-f=salida.txt","-m=s", "8"};
+        String[] args = {"-o=vd","-f=salida.txt","-m=s", "5"};
         fibo.main(args);
     }
 
@@ -116,4 +116,15 @@ public class testFibo3 {
         fibo.main(args);
     }
 
+    @Test
+    public void imprimirComoFibo1(){
+        String[] args = {"8"};
+        fibo.main(args);
+    }
+
+    @Test
+    public void imprimirSinO(){
+        String[] args = {"-m=l", "-f=salida.txt","8"};
+        fibo.main(args);
+    }
 }

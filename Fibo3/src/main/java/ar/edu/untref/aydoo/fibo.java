@@ -1,12 +1,21 @@
 package ar.edu.untref.aydoo;
-import java.io.*;
 
 public class fibo {
     public static void main(String[] args) {
         try {
             int limite = Integer.parseInt(args[args.length - 1]);
+
             arregloDeNumeros claseArreglo = new arregloDeNumeros();
             int[] arreglo = claseArreglo.obtenerArregloDeNumerosDeFibonacci(limite);
+
+            if(args.length == 1){
+                System.out.print("fibo<" + args.length + ">: ");
+                System.out.print("0 1 ");
+                for (int i = 2; i < arreglo.length; i++ ){
+                    System.out.print(arreglo[i] + " ");
+                }
+                return;
+            }
 
             String opcionO = null;
             String opcionF = null;
