@@ -76,13 +76,13 @@ public class Program {
 		    	
 		    }
 		    else {
-		    	if (formato != null && modoFuncionamiento == null && salida == null || pares == true ) {
+		    	if (formato != null && modoFuncionamiento == null && salida == null || args.length == 2 ) {
 		    		if (direccion == 'i') {
 				    	resultado = ordenarEnFormaDescendente(resultado);
 				    }
 		    		ImpresionPantalla.mostrarNumerosSegunOrientacion(orientacion, numero, resultado);
 				    
-		    	} else if (formato != null && modoFuncionamiento != null && salida == null || pares == true) {
+		    	} else if (modoFuncionamiento != null && salida == null ) {
 		    		ImpresionPantalla.mostrarNumerosSegunModoDeFuncionamiento(funcionamiento, orientacion, numero, resultado);
 		    		
 		    	} else if (nombreDelArchivo != null ) {

@@ -68,6 +68,11 @@ public class ImpresionTest {
         Program.main(argumentos);
     }
 
+    @Test
+    public void impresionProgresivaDeNumerosPares(){
+        String argumentos[] = {"-o=pd","-n=p","8"};
+        Program.main(argumentos);
+    }
 
     
 
