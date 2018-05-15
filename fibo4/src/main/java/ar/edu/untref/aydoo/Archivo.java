@@ -6,13 +6,15 @@ import java.io.FileWriter;
 
 public class Archivo {
 
-	public static void escribirSobreArchivo(final String archivoDestino, char funcionamiento, final char orientacion, final int numero, final int[] resultado) {
+	public static void escribirSobreArchivo(final String archivoDestino,
+		char funcionamiento, final char orientacion, final int numero, final int[] resultado) {
+
 		if (funcionamiento == ' ') {
 			funcionamiento = 'l';
 		}
     	File archivo;
     	BufferedWriter escritura;
-    	System.out.printf("fibo<%d> guardado en %s.txt", numero, archivoDestino);
+    	System.out.printf("fibo<%d> guardado en %s", numero, archivoDestino);
     	try {
         	archivo = new File(archivoDestino);
     		escritura = new BufferedWriter(new FileWriter(archivo));
@@ -45,7 +47,7 @@ public class Archivo {
     		}
     		escritura.close();
         } catch (Exception e) {
-        		
+        		System.out.println("Opciones no validas.");
         }
     }
 }

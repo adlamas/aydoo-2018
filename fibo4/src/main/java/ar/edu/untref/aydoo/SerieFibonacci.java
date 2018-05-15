@@ -8,7 +8,8 @@ public class SerieFibonacci {
 		} else if (numero == 1) {
 			return 1;
 		} else {
-			return (calcularElementoEnLaSerieDeFibonacci(numero - 1) + calcularElementoEnLaSerieDeFibonacci(numero - 2));
+			return (calcularElementoEnLaSerieDeFibonacci(numero - 1) +
+					calcularElementoEnLaSerieDeFibonacci(numero - 2));
 		}
 	}
 	
@@ -22,7 +23,8 @@ public class SerieFibonacci {
 	
 	public static void calcularSerie(final int numero, final int[] resultado) {
     	for (int numeroDeLaSerie = 0; numeroDeLaSerie < numero; numeroDeLaSerie++) {
-	    	resultado[numeroDeLaSerie] = SerieFibonacci.calcularElementoEnLaSerieDeFibonacci(numeroDeLaSerie);
+	    	resultado[numeroDeLaSerie] = SerieFibonacci.
+					calcularElementoEnLaSerieDeFibonacci(numeroDeLaSerie);
 	    }
     }
 }

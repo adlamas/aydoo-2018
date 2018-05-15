@@ -32,6 +32,7 @@ public class ProgramTest {
 	    String[] argumentos = {"-o=hi", "8"};
 
 	    Program.main(argumentos);
+
 	    String salida = new String(baos.toByteArray());
 
 	    Assert.assertEquals(esperado, salida);
@@ -62,7 +63,7 @@ public class ProgramTest {
 	public void probarSalidaDelMainConOpcionesInvalidas() {
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 	    System.setOut(new PrintStream(baos));
-	    String esperado = "Opciones no validas";
+	    String esperado = "Opciones no validas.";
 	    String[] argumentos = {"-o=xy", "8"};
 
 	    Program.main(argumentos);
