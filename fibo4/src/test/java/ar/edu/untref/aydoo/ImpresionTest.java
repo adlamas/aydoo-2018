@@ -32,12 +32,19 @@ public class ImpresionTest {
     }
 
     @Test
-    public void opcionesNoValidas(){
+    public void opcionesNoValidas1(){
         String argumentos[] = {"-o=ph", "8"};
         Program.main(argumentos);
+        System.out.println();
+
+    }
+
+    @Test
+    public void opcionesNoValidas2(){
 
         String argumentos2[] = {"-o=pv", "8"};
         Program.main(argumentos2);
+        System.out.println();
 
     }
 
@@ -73,7 +80,5 @@ public class ImpresionTest {
         String argumentos[] = {"-o=pd","-n=p","8"};
         Program.main(argumentos);
     }
-
-    
 
 }
